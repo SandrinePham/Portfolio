@@ -1,0 +1,62 @@
+@use "../style/variables.scss" as *;
+
+
+.contact {
+  padding: $spacing-xl 0;
+  
+  &__header {
+    margin-bottom: $spacing-xl;
+  }
+  
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-xl;
+    
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+  
+  &__info {
+    h2 {
+      color: $primary-color;
+      margin-bottom: $spacing-md;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: $spacing-lg;
+    }
+  }
+  
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+  
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    
+    strong {
+      font-family: $font-modern;
+      color: $primary-color;
+    }
+    
+    span {
+      color: $text-medium;
+    }
+  }
+  
+  &__form {
+    background: white;
+    padding: $spacing-lg;
+    border-radius: 8px;
+    box-shadow: $shadow-medium;
+  }
+}

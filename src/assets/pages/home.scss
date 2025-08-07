@@ -1,0 +1,368 @@
+// src/scss/pages/home.scss
+@use "../style/variables.scss" as *;
+
+:root {
+  --primary-color: #{$primary-color};
+}
+
+// Animations
+@keyframes fadeInUpSoft {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blinkCaret {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+// Home container
+.home {
+  opacity: 0;
+  transition: opacity 1s ease;
+
+  &--visible {
+    opacity: 1;
+  }
+}
+
+// Hero Section
+.hero {
+  padding: $spacing-sm 0;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xl;
+    text-align: center;
+    padding: 0 $spacing-md;
+  }
+
+  &__text {
+    animation: fadeInUpSoft 1.2s $transition-slow both;
+    animation-delay: 0.3s;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  &__title {
+    margin: 0 auto 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__description {
+    margin-bottom: $spacing-sm;
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 1200px;
+      color: $text-light;
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+
+  &__cta {
+    animation: fadeInUp 1s ease both;
+    animation-delay: 0.6s;
+    margin-top: $spacing-sm;
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+    }
+  }
+}
+
+.hero {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: auto;
+
+  &__left {
+    flex: 1; // moitié gauche
+    max-width: 50%;
+    min-width: 300px; // pour garder un minimum sur petits écrans
+    padding: 1rem;
+  }
+
+  &__right {
+    flex: 1; // moitié droite
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    &__left,
+    &__right {
+      max-width: 100%;
+      min-width: auto;
+    }
+
+    &__left {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .carousel-container {
+    max-height: none;
+    height: 250px; // ✅ Ajout essentiel pour rendre les images visibles
+  }
+}
+
+// Afficher / cacher les carrousels selon la taille d'écran
+.show-desktop {
+  display: block;
+}
+
+.show-mobile {
+  display: none;
+}
+
+@media (max-width: $mobile) {
+  .show-desktop {
+    display: none !important;
+  }
+
+  .show-mobile {
+    display: block !important;
+    margin: 2rem 0;
+  }
+}
+
+// 🔤 Typewriter: ligne de base
+.hero__typewriter-line {
+  font-family: $font-heading;
+  white-space: nowrap;
+  display: inline-block;
+  overflow: hidden;
+  border-right: 2px solid transparent; // par défaut, pas de curseur
+  padding-right: 2px;
+  line-height: 1.4;
+}
+
+// ✨ Curseur actif uniquement sur la dernière ligne en cours
+.hero__typewriter-line--active {
+  border-right: 2px solid var(--primary-color);
+  animation: blinkCaret 1s step-end infinite;
+}
+
+// 💫 Blink animation
+
+// 🌟 Typo principale : accroche poétique
+.typewriter--large {
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: $text-dark;
+  letter-spacing: 0.5px;
+}
+
+// 🌿 Phrase secondaire : complément fluide
+.typewriter--small {
+  font-size: 2.6rem;
+  color: $accent-color;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+// 👩‍🎨 Nom : visible, élégant
+.typewriter--name {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: $primary-color;
+  margin-top: 0.3rem;
+  text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.08);
+}
+
+// 🛠 Fonction : finesse et modernité
+.typewriter--fonction {
+  font-family: $font-modern;
+  font-size: 1rem;
+  color: $text-light;
+  margin-top: -2px;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+}
+
+.hero__cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: var(--primary-color);
+  margin-left: 2px;
+  animation: blinkCaret 1s steps(1) infinite;
+  vertical-align: bottom;
+}
+
+// Highlights Section
+.home__highlights {
+  padding: $spacing-xl 0;
+  background: rgba(255, 255, 255, 0.3);
+  margin-top: $spacing-xl;
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  padding: 0 $spacing-md;
+}
+
+.highlight-card {
+  text-align: center;
+  padding: $spacing-lg;
+  background: white;
+  border-radius: 8px;
+  box-shadow: $shadow-light;
+  transition: $transition-medium;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-medium;
+  }
+
+  &__number {
+    font-family: $font-heading;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__text {
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: $spacing-xs;
+    }
+
+    p {
+      color: $text-light;
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+}
+
+// --- Responsive Typewriter Title ---
+@media (max-width: 1024px) {
+  .typewriter--large {
+    font-size: 2.2rem;
+  }
+
+  .typewriter--small {
+    font-size: 1.6rem;
+  }
+
+  .typewriter--name {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .typewriter--large {
+    font-size: 1.8rem;
+  }
+
+  .typewriter--small {
+    font-size: 1.4rem;
+  }
+
+  .typewriter--name {
+    font-size: 1.6rem;
+  }
+
+  .hero__description p {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero__description p {
+    font-size: 1.1rem;
+  }
+
+  .highlights {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .highlight-card__number {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .highlights {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Par défaut : afficher version desktop, cacher version mobile
+.carousel--desktop {
+  display: block;
+}
+
+.carousel--mobile {
+  display: none;
+}
+
+// En mobile : on inverse
+@media (max-width: $mobile) {
+  .carousel--desktop {
+    display: none;
+  }
+
+  .carousel--mobile {
+    display: block;
+    margin: $spacing-md 0;
+  }
+}
+
+.signatureName {
+  font-size: 1.8rem;
+  color: $primary-color;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
+}
+
+.signatureFonction {
+  font-family: $font-modern;
+  font-size: 0.9rem;
+  color: $text-light;
+  margin-top: -5px;
+}

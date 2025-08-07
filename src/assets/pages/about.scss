@@ -1,0 +1,91 @@
+@use "../style/variables.scss" as *;
+
+
+.about {
+  padding: $spacing-xl 0;
+  
+  &__header {
+    margin-bottom: $spacing-xl;
+  }
+  
+  &__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: $spacing-xl;
+    
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+  }
+  
+  &__story {
+    .story-section {
+      margin-bottom: $spacing-lg;
+      
+      h2 {
+        color: $primary-color;
+        border-bottom: 2px solid $secondary-color;
+        padding-bottom: $spacing-xs;
+        margin-bottom: $spacing-md;
+      }
+      
+      p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: $spacing-md;
+      }
+    }
+  }
+  
+  &__image {
+    position: relative;
+    
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      filter: sepia(10%);
+    }
+  }
+}
+
+.philosophy-points {
+  .point {
+    padding: $spacing-sm;
+    margin-bottom: $spacing-sm;
+    background: rgba(139, 69, 19, 0.05);
+    border-left: 4px solid $secondary-color;
+    border-radius: 4px;
+    
+    strong {
+      color: $primary-color;
+      font-family: $font-modern;
+    }
+  }
+}
+
+.image-caption {
+  text-align: center;
+  font-family: $font-modern;
+  font-style: italic;
+  color: $text-light;
+  margin-top: $spacing-sm;
+}
+
+// Animation fade-in
+.story-section,
+.about__image,
+.skill-item,
+.tool-item,
+.methodology-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

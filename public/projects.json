@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "title": "Riding Cities, association de skate",
+    "description": "Refonte de la page Internet avec HTML. Ajout d'une section des membres fondateurs et d’un double bouton pour les plannings enfants et adultes.",
+    "technologies": ["HTML", "Figma", "Visual Studio Code"],
+    "image": "https://images.pexels.com/photos/1703895/pexels-photo-1703895.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "status": "Terminé",
+    "code": "https://github.com/SandrinePham/Riding-cities",
+    "projet": "https://sandrinepham.github.io/Riding-cities/"
+  },
+  {
+    "id": 2,
+    "title": "Booki, agence de voyage",
+    "description": "Création de la page d’accueil responsive d’une agence de voyage pour rechercher hébergements et activités selon une ville.",
+    "technologies": ["HTML", "CSS", "Figma"],
+    "image": "https://images.pexels.com/photos/346885/pexels-photo-346885.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "status": "Terminé",
+    "code": "https://github.com/SandrinePham/booki",
+    "projet": "https://sandrinepham.github.io/booki/"
+  },
+  {
+    "id": 3,
+    "title": "Ohmyfood, menus de restaurants",
+    "description": "Site mobile-first de présentation de menus gastronomiques avec animations CSS et versionnement Git/GitHub.",
+    "technologies": ["HTML", "Sass", "CSS", "GitHub"],
+    "image": "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "status": "Terminé",
+    "code": "https://github.com/SandrinePham/ohmyfood",
+    "projet": "https://sandrinepham.github.io/ohmyfood/"
+  },
+  {
+    "id": 4,
+    "title": "Print it, imprimerie familiale",
+    "description": "Ajout d’un carrousel interactif en JavaScript pour moderniser un site HTML existant.",
+    "technologies": ["JavaScript", "HTML", "CSS"],
+    "image": "https://images.pexels.com/photos/274123/pexels-photo-274123.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "status": "Terminé",
+    "code": "https://github.com/SandrinePham/PrintIt",
+    "projet": "https://sandrinepham.github.io/PrintIt/"
+  },
+  {
+    "id": 5,
+    "title": "Kasa, location d’appartements",
+    "description": "Développement d'une application React avec React Router, animations CSS et carrousel pour les pages de logement.",
+    "technologies": ["React", "React Router", "Sass", "Vite", "Node.js"],
+    "image": "https://images.pexels.com/photos/259957/pexels-photo-259957.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "status": "Terminé",
+    "code": "https://github.com/SandrinePham/Kasa",
+    "projet": "https://sandrinepham.github.io/Kasa/"
+  },
+  {
+    "id": 6,
+    "title": "Nina Carducci, photographe",
+    "description": "Optimisation SEO, accessibilité et performance du site via Lighthouse, Wave et bonnes pratiques HTML/CSS.",
+    "technologies": ["Lighthouse", "Wave", "SEO", "HTML", "CSS"],
+    "image": "https://images.pexels.com/photos/274973/pexels-photo-274973.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "status": "Terminé",
+    "code": "https://github.com/SandrinePham/Nina-Carducci",
+    "projet": "https://sandrinepham.github.io/Nina-Carducci/"
+  },
+  {
+    "id": 7,
+    "title": "724events, agence évènementielle",
+    "description": "Débogage d’un site React avec Chrome DevTools et rédaction du cahier de recette.",
+    "technologies": ["JavaScript", "React", "Chrome DevTools", "Node.js", "GitHub"],
+    "image": "https://images.pexels.com/photos/3184194/pexels-photo-3184194.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "status": "Terminé",
+    "code": "https://github.com/SandrinePham/724events",
+    "projet": "https://sandrinepham.github.io/724events/"
+  },
+  {
+    "id": 8,
+    "title": "ArgentBank, banque en ligne",
+    "description": "Création d’une interface React/Redux connectée à une API back-end avec gestion d’état globale.",
+    "technologies": ["React", "Redux", "Node.js", "Swagger", "API"],
+    "image": "https://images.pexels.com/photos/4386374/pexels-photo-4386374.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "status": "En cours",
+    "code": "https://github.com/SandrinePham/Argent-Bank",
+    "projet": "https://sandrinepham.github.io/Argent-Bank/"
+  },
+  {
+    "id": 9,
+    "title": "Menu Maker, diffusion de menu",
+    "description": "Rédaction des spécifications techniques, mise en place d’une veille technologique pour un outil de gestion de menus et mise en place du tableau Kanban pour le sprint.",
+    "technologies": ["Kanban", "Agile", "Veille Techno", "Spécifications"],
+    "image": "https://images.pexels.com/photos/288477/pexels-photo-288477.jpeg?auto=compress&cs=tinysrgb&w=600",
+    "status": "Terminé",
+    "projet": "https://trello.com/invite/b/687e345959a97cc399e2f5a3/ATTIc3d477275d3e683180148a418445f65d8AE18343/menu-market-kanban"
+  },
+{
+  "id": 10,
+  "title": "Sophie Bluel, architecte d'intérieur",
+  "description": "Création d'une page web dynamique",
+  "technologies": ["JavaScript", "React", "API", "Node.js", "GitHub", "Figma"],
+  "image": "https://images.pexels.com/photos/3958953/pexels-photo-3958953.jpeg?auto=compress&cs=tinysrgb&w=600",
+  "status": "Terminé",
+  "code": "https://github.com/SandrinePham/Portfolio-architecte-sophie-bluel-master",
+  "projet": "https://sandrinepham.github.io/Portfolio-architecte-sophie-bluel-master/"
+}
+]

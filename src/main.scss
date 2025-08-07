@@ -1,0 +1,21 @@
+// Variables
+@use './assets/style/variables.scss' as *;
+
+// Base
+@use './assets/style/base.scss' as *;
+
+// Components
+@use './assets/components/header.scss' as *;
+@use './assets/components/buttons.scss' as *;
+@use './assets/components/forms.scss' as *;
+@use './assets/components/footer.scss' as *;
+// Pages
+@use './assets/pages/home.scss' as *;
+@use './assets/pages/about.scss' as *;
+@use './assets/pages/projects.scss' as *;
+@use './assets/pages/skills.scss' as *;
+@use './assets/pages/contact.scss' as *;
+@use './assets/pages/experiences.scss' as *;
+
+// Utilities
+@use './assets/style/utilities.scss' as *;

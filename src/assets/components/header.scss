@@ -1,0 +1,125 @@
+@use '../style/variables.scss' as *;
+
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: rgba(245, 230, 211, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid $primary-color;
+  z-index: 1000;
+  transition: $transition-medium;
+  
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+  }
+  
+  &__logo {
+    h1 {
+      font-size: 1.8rem;
+      color: $primary-color;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
+    }
+  }
+  
+  &__subtitle {
+    font-family: $font-modern;
+    font-size: 0.9rem;
+    color: $text-light;
+    margin-top: -5px;
+  }
+  
+  &__menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    
+    span {
+      width: 25px;
+      height: 3px;
+      background: $primary-color;
+      margin: 3px 0;
+      transition: $transition-fast;
+    }
+    
+    @media (max-width: 927px) {
+      display: flex;
+    }
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    list-style: none;
+    
+    @media (max-width: 927px) {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: rgba(245, 230, 211, 0.98);
+      flex-direction: column;
+      padding: $spacing-md;
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: $transition-medium;
+    }
+  }
+  
+  &--open {
+    .nav__list {
+      @media (max-width: $mobile) {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+  
+  &__link {
+    text-decoration: none;
+    color: $text-dark;
+    font-family: $font-modern;
+    font-weight: 500;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: 4px;
+    transition: $transition-fast;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: $secondary-color;
+      transition: $transition-fast;
+      transform: translateX(-50%);
+    }
+    
+    &:hover,
+    &.active {
+      color: $primary-color;
+      
+      &::before {
+        width: 80%;
+      }
+    }
+  }
+}
