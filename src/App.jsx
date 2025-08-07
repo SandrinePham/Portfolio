@@ -1,16 +1,18 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Header from './assets/components/Header'
-import Home from './assets/pages/Home'
-import About from './assets/pages/About'
-import Projects from './assets/pages/Projects'
-import Skills from './assets/pages/Skills'
-import Contact from './assets/pages/Contact'
-import Experience from './assets/pages/Experience'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./assets/components/Header";
+import Home from "./assets/pages/Home";
+import About from "./assets/pages/About";
+import Projects from "./assets/pages/Projects";
+import Skills from "./assets/pages/Skills";
+import Contact from "./assets/pages/Contact";
+import Experience from "./assets/pages/Experience";
 import Footer from "./assets/components/Footer";
+
+const basename = process.env.PUBLIC_URL || "/";
 
 function App() {
   return (
-    <Router>
+    <Router basename={basename}>
       <div className="app">
         <Header />
         <main className="main-content">
@@ -26,7 +28,7 @@ function App() {
         <Footer />
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
