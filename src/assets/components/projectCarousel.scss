@@ -67,7 +67,7 @@
     left: 20px;
     width: 14px;
     height: 14px;
-    background: radial-gradient(circle at center, $primary-color 60%, darken($primary-color, 20%) 100%);
+    background: radial-gradient(circle at center, $primary-color 60%, ($primary-color, 20%) );
     border-radius: 50%;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
     z-index: 3;
