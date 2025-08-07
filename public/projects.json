@@ -75,7 +75,7 @@
     "description": "Création d’une interface React/Redux connectée à une API back-end avec gestion d’état globale.",
     "technologies": ["React", "Redux", "Node.js", "Swagger", "API"],
     "image": "https://images.pexels.com/photos/4386374/pexels-photo-4386374.jpeg?auto=compress&cs=tinysrgb&w=600",
-    "status": "En cours",
+    "status": "Terminé",
     "code": "https://github.com/SandrinePham/Argent-Bank",
     "projet": "https://sandrinepham.github.io/Argent-Bank/"
   },

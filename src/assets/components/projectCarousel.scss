@@ -128,3 +128,9 @@
     padding: 0.5rem;
   }
 }
+
+.carousel-image.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}

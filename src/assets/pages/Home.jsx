@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";  // <-- Import ici
 import Typewriter from "../components/Typewriter";
 import ProjectCarousel from "../components/ProjectCarousel";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();  // <-- Hook de navigation
 
   useEffect(() => {
     setIsVisible(true);
@@ -20,7 +22,6 @@ const Home = () => {
     },
   ];
 
-  // Mock des 3 derniers projets — remplace par tes données réelles
   const projects = [
     {
       title: "Portfolio Créatif",
@@ -35,6 +36,11 @@ const Home = () => {
       image: "/images/project3.jpg",
     },
   ];
+
+  // Fonction pour rediriger vers la page Contact
+  const handleContactClick = () => {
+    navigate("/contact");
+  };
 
   return (
     <div className={`home ${isVisible ? "home--visible" : ""}`}>
@@ -69,7 +75,10 @@ const Home = () => {
               </div>
 
               <div className="hero__cta">
-                <button className="btn btn--primary">
+                <button
+                  className="btn btn--primary"
+                  onClick={handleContactClick} // <-- onClick ajouté
+                >
                   Discutons de votre projet
                 </button>
               </div>
