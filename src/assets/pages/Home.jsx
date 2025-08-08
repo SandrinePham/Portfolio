@@ -91,7 +91,7 @@ const Home = () => {
         <div className="container">
           <div className="highlights">
             <article className="highlight-card">
-              <div className="highlight-card__number">3+</div>
+              <div className="highlight-card__number">1+</div>
               <div className="highlight-card__text">
                 <h3>Années de création digitale</h3>
                 <p>
@@ -102,7 +102,7 @@ const Home = () => {
             </article>
 
             <article className="highlight-card">
-              <div className="highlight-card__number">15+</div>
+              <div className="highlight-card__number">10</div>
               <div className="highlight-card__text">
                 <h3>Projets façonnés sur mesure</h3>
                 <p>Chaque ligne de code pensée pour sublimer votre vision.</p>
