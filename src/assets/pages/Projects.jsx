@@ -39,12 +39,22 @@ export default function Projects() {
     gestionProjet: false,
   });
 
-  // Chargement des projets depuis projects.json au montage
+  // Chargement asynchrone des projets avec gestion du chemin
   useEffect(() => {
-    fetch("/projects.json")
-      .then((res) => res.json())
-      .then((data) => setProjectsData(data))
-      .catch((err) => console.error("Erreur chargement JSON :", err));
+    const fetchProjects = async () => {
+      try {
+        const basePath = process.env.PUBLIC_URL || "";
+        const response = await fetch(`${basePath}/data/projects.json`);
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+        const data = await response.json();
+        setProjectsData(data);
+      } catch (error) {
+        console.error("Erreur chargement JSON :", error);
+      }
+    };
+    fetchProjects();
   }, []);
 
   const toggleSection = (section) => {
@@ -84,22 +94,20 @@ export default function Projects() {
       .filter((project) => {
         const techs = project.technologies.map((t) => t.toLowerCase());
 
-        const categoryMatches = (category, selectedSet) => {
-          if (selectedSet.size === 0) return true;
-          return [...selectedSet].some((sel) =>
-            techs.includes(sel.toLowerCase())
-          );
-        };
+        const matchesCategory = (selectedSet) =>
+          selectedSet.size === 0 ||
+          [...selectedSet].some((sel) => techs.includes(sel.toLowerCase()));
 
         if (
-          !categoryMatches("languages", filters.languages) ||
-          !categoryMatches("frameworks", filters.frameworks) ||
-          !categoryMatches("outilsDev", filters.outilsDev) ||
-          !categoryMatches("outilsSEO", filters.outilsSEO) ||
-          !categoryMatches("outilsDesign", filters.outilsDesign) ||
-          !categoryMatches("gestionProjet", filters.gestionProjet)
-        )
+          !matchesCategory(filters.languages) ||
+          !matchesCategory(filters.frameworks) ||
+          !matchesCategory(filters.outilsDev) ||
+          !matchesCategory(filters.outilsSEO) ||
+          !matchesCategory(filters.outilsDesign) ||
+          !matchesCategory(filters.gestionProjet)
+        ) {
           return false;
+        }
 
         if (
           search.trim() &&
@@ -107,8 +115,9 @@ export default function Projects() {
             project.title.toLowerCase().includes(search.toLowerCase()) ||
             project.description.toLowerCase().includes(search.toLowerCase())
           )
-        )
+        ) {
           return false;
+        }
 
         return true;
       });
@@ -132,19 +141,17 @@ export default function Projects() {
         <div className="projects__header">
           <h1 className="page-title">Mes Projets</h1>
           <div className="page-subtitle">Une sélection de mes créations</div>
+
+          {/* <button onClick={resetFilters} className="btn btn--reset">
+            Réinitialiser filtres
+          </button> */}
         </div>
 
         <div className="projects__filters">
-          {/* Boutons pour reset filtres ou recherche si tu veux les ajouter */}
-          {/* <button onClick={resetFilters}>Réinitialiser</button> */}
-
-          <div className="filter-row">
-            {[
-              ["languages", "Languages"],
-              ["frameworks", "Frameworks"],
-            ].map(([key, label]) => (
+          {[["languages", "Languages"], ["frameworks", "Frameworks"]].map(
+            ([key, label]) => (
               <div key={key} className="filter-category">
-                <h4 onClick={() => toggleSection(key)}>
+                <h4 onClick={() => toggleSection(key)} style={{cursor: "pointer"}}>
                   {label}
                   {openSections[key] ? (
                     <FaChevronUp size={14} />
@@ -153,21 +160,16 @@ export default function Projects() {
                   )}
                 </h4>
                 {openSections[key] && (
-                  <div className="checkbox-group">
-                    {renderCheckboxes(key, FILTER_CATEGORIES[key])}
-                  </div>
+                  <div className="checkbox-group">{renderCheckboxes(key, FILTER_CATEGORIES[key])}</div>
                 )}
               </div>
-            ))}
-          </div>
+            )
+          )}
 
-          <div className="filter-row">
-            {[
-              ["outilsDev", "Outils Dev"],
-              ["outilsSEO", "Outils SEO"],
-            ].map(([key, label]) => (
+          {[["outilsDev", "Outils Dev"], ["outilsSEO", "Outils SEO"]].map(
+            ([key, label]) => (
               <div key={key} className="filter-category">
-                <h4 onClick={() => toggleSection(key)}>
+                <h4 onClick={() => toggleSection(key)} style={{cursor: "pointer"}}>
                   {label}
                   {openSections[key] ? (
                     <FaChevronUp size={14} />
@@ -176,21 +178,16 @@ export default function Projects() {
                   )}
                 </h4>
                 {openSections[key] && (
-                  <div className="checkbox-group">
-                    {renderCheckboxes(key, FILTER_CATEGORIES[key])}
-                  </div>
+                  <div className="checkbox-group">{renderCheckboxes(key, FILTER_CATEGORIES[key])}</div>
                 )}
               </div>
-            ))}
-          </div>
+            )
+          )}
 
-          <div className="filter-row">
-            {[
-              ["outilsDesign", "Outils Design"],
-              ["gestionProjet", "Gestion de projet"],
-            ].map(([key, label]) => (
+          {[["outilsDesign", "Outils Design"], ["gestionProjet", "Gestion de projet"]].map(
+            ([key, label]) => (
               <div key={key} className="filter-category">
-                <h4 onClick={() => toggleSection(key)}>
+                <h4 onClick={() => toggleSection(key)} style={{cursor: "pointer"}}>
                   {label}
                   {openSections[key] ? (
                     <FaChevronUp size={14} />
@@ -199,31 +196,26 @@ export default function Projects() {
                   )}
                 </h4>
                 {openSections[key] && (
-                  <div className="checkbox-group">
-                    {renderCheckboxes(key, FILTER_CATEGORIES[key])}
-                  </div>
+                  <div className="checkbox-group">{renderCheckboxes(key, FILTER_CATEGORIES[key])}</div>
                 )}
               </div>
-            ))}
-          </div>
+            )
+          )}
 
           <div className="projects__count">
-            {filteredProjects.length} projet
-            {filteredProjects.length > 1 ? "s" : ""} trouvé
-            {filteredProjects.length !== projectsData.length
-              ? ` sur ${projectsData.length}`
-              : ""}
+            {filteredProjects.length} projet{filteredProjects.length > 1 ? "s" : ""} trouvé
+            {filteredProjects.length !== projectsData.length ? ` sur ${projectsData.length}` : ""}
           </div>
 
           <div className="projects__grid">
             {filteredProjects.map((project) => (
               <article key={project.id} className="project-card">
                 <div className="project-card__image">
-                  <img src={project.image} alt={project.title} />
+                  <img src={project.image} alt={project.title} loading="lazy" />
                   <div
                     className={`project-card__status project-card__status--${project.status
                       .toLowerCase()
-                      .replace(" ", "-")}`}
+                      .replace(/\s/g, "-")}`}
                   >
                     {project.status}
                   </div>
@@ -231,9 +223,7 @@ export default function Projects() {
 
                 <div className="project-card__content">
                   <h3 className="project-card__title">{project.title}</h3>
-                  <p className="project-card__description">
-                    {project.description}
-                  </p>
+                  <p className="project-card__description">{project.description}</p>
 
                   <div className="project-card__technologies">
                     {project.technologies.map((tech) => (

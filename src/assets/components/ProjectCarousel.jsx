@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './ProjectCarousel.scss';
+import React, { useState, useEffect, useRef } from "react";
+import "./ProjectCarousel.scss";
 
-const postitColors = ['#FFE55C', '#87CEEB', '#98FB98', '#FFB6C1'];
+const postitColors = ["#FFE55C", "#87CEEB", "#98FB98", "#FFB6C1"];
 
 const ProjectCarousel = () => {
   const [projects, setProjects] = useState([]);
@@ -10,12 +10,23 @@ const ProjectCarousel = () => {
 
   const getColor = (index) => postitColors[index % postitColors.length];
 
-  // Charger les projets depuis projects.json au montage
+  // Chargement des projets depuis le dossier public avec PUBLIC_URL
   useEffect(() => {
-    fetch('/projects.json')
-      .then((response) => response.json())
-      .then((data) => setProjects(data))
-      .catch((error) => console.error('Erreur chargement JSON :', error));
+    const fetchProjects = async () => {
+      try {
+        const basePath = process.env.PUBLIC_URL || "";
+        const response = await fetch(`${basePath}/data/projects.json`);
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
+        }
+        const data = await response.json();
+        setProjects(data);
+      } catch (error) {
+        console.error("Erreur chargement JSON :", error);
+      }
+    };
+
+    fetchProjects();
   }, []);
 
   const goToSlide = (index) => {
@@ -35,6 +46,7 @@ const ProjectCarousel = () => {
   };
 
   const startAutoSlide = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) =>
         projects.length === 0
@@ -70,9 +82,8 @@ const ProjectCarousel = () => {
             key={index}
             src={project.image}
             alt={project.title}
-            className={`carousel-image ${
-              index === currentIndex ? 'active' : ''
-            }`}
+            className={`carousel-image ${index === currentIndex ? "active" : ""}`}
+            loading="lazy"
           />
         ))}
         <div
@@ -83,10 +94,10 @@ const ProjectCarousel = () => {
         </div>
       </div>
 
-      <button className="carousel-button left" onClick={prevSlide}>
+      <button className="carousel-button left" onClick={prevSlide} aria-label="Projet précédent">
         &#10094;
       </button>
-      <button className="carousel-button right" onClick={nextSlide}>
+      <button className="carousel-button right" onClick={nextSlide} aria-label="Projet suivant">
         &#10095;
       </button>
     </div>
