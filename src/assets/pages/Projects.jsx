@@ -43,8 +43,8 @@ export default function Projects() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const basePath = process.env.PUBLIC_URL || "";
-        const response = await fetch(`${basePath}/data/projects.json`);
+        const basePath = import.meta.env.BASE_URL || "";
+        const response = await fetch(`${basePath}data/projects.json`);
         if (!response.ok) {
           throw new Error(`Erreur HTTP : ${response.status}`);
         }
@@ -148,63 +148,84 @@ export default function Projects() {
         </div>
 
         <div className="projects__filters">
-          {[["languages", "Languages"], ["frameworks", "Frameworks"]].map(
-            ([key, label]) => (
-              <div key={key} className="filter-category">
-                <h4 onClick={() => toggleSection(key)} style={{cursor: "pointer"}}>
-                  {label}
-                  {openSections[key] ? (
-                    <FaChevronUp size={14} />
-                  ) : (
-                    <FaChevronDown size={14} />
-                  )}
-                </h4>
-                {openSections[key] && (
-                  <div className="checkbox-group">{renderCheckboxes(key, FILTER_CATEGORIES[key])}</div>
+          {[
+            ["languages", "Languages"],
+            ["frameworks", "Frameworks"],
+          ].map(([key, label]) => (
+            <div key={key} className="filter-category">
+              <h4
+                onClick={() => toggleSection(key)}
+                style={{ cursor: "pointer" }}
+              >
+                {label}
+                {openSections[key] ? (
+                  <FaChevronUp size={14} />
+                ) : (
+                  <FaChevronDown size={14} />
                 )}
-              </div>
-            )
-          )}
+              </h4>
+              {openSections[key] && (
+                <div className="checkbox-group">
+                  {renderCheckboxes(key, FILTER_CATEGORIES[key])}
+                </div>
+              )}
+            </div>
+          ))}
 
-          {[["outilsDev", "Outils Dev"], ["outilsSEO", "Outils SEO"]].map(
-            ([key, label]) => (
-              <div key={key} className="filter-category">
-                <h4 onClick={() => toggleSection(key)} style={{cursor: "pointer"}}>
-                  {label}
-                  {openSections[key] ? (
-                    <FaChevronUp size={14} />
-                  ) : (
-                    <FaChevronDown size={14} />
-                  )}
-                </h4>
-                {openSections[key] && (
-                  <div className="checkbox-group">{renderCheckboxes(key, FILTER_CATEGORIES[key])}</div>
+          {[
+            ["outilsDev", "Outils Dev"],
+            ["outilsSEO", "Outils SEO"],
+          ].map(([key, label]) => (
+            <div key={key} className="filter-category">
+              <h4
+                onClick={() => toggleSection(key)}
+                style={{ cursor: "pointer" }}
+              >
+                {label}
+                {openSections[key] ? (
+                  <FaChevronUp size={14} />
+                ) : (
+                  <FaChevronDown size={14} />
                 )}
-              </div>
-            )
-          )}
+              </h4>
+              {openSections[key] && (
+                <div className="checkbox-group">
+                  {renderCheckboxes(key, FILTER_CATEGORIES[key])}
+                </div>
+              )}
+            </div>
+          ))}
 
-          {[["outilsDesign", "Outils Design"], ["gestionProjet", "Gestion de projet"]].map(
-            ([key, label]) => (
-              <div key={key} className="filter-category">
-                <h4 onClick={() => toggleSection(key)} style={{cursor: "pointer"}}>
-                  {label}
-                  {openSections[key] ? (
-                    <FaChevronUp size={14} />
-                  ) : (
-                    <FaChevronDown size={14} />
-                  )}
-                </h4>
-                {openSections[key] && (
-                  <div className="checkbox-group">{renderCheckboxes(key, FILTER_CATEGORIES[key])}</div>
+          {[
+            ["outilsDesign", "Outils Design"],
+            ["gestionProjet", "Gestion de projet"],
+          ].map(([key, label]) => (
+            <div key={key} className="filter-category">
+              <h4
+                onClick={() => toggleSection(key)}
+                style={{ cursor: "pointer" }}
+              >
+                {label}
+                {openSections[key] ? (
+                  <FaChevronUp size={14} />
+                ) : (
+                  <FaChevronDown size={14} />
                 )}
-              </div>
-            )
-          )}
+              </h4>
+              {openSections[key] && (
+                <div className="checkbox-group">
+                  {renderCheckboxes(key, FILTER_CATEGORIES[key])}
+                </div>
+              )}
+            </div>
+          ))}
 
           <div className="projects__count">
-            {filteredProjects.length} projet{filteredProjects.length > 1 ? "s" : ""} trouvé
-            {filteredProjects.length !== projectsData.length ? ` sur ${projectsData.length}` : ""}
+            {filteredProjects.length} projet
+            {filteredProjects.length > 1 ? "s" : ""} trouvé
+            {filteredProjects.length !== projectsData.length
+              ? ` sur ${projectsData.length}`
+              : ""}
           </div>
 
           <div className="projects__grid">
@@ -223,7 +244,9 @@ export default function Projects() {
 
                 <div className="project-card__content">
                   <h3 className="project-card__title">{project.title}</h3>
-                  <p className="project-card__description">{project.description}</p>
+                  <p className="project-card__description">
+                    {project.description}
+                  </p>
 
                   <div className="project-card__technologies">
                     {project.technologies.map((tech) => (

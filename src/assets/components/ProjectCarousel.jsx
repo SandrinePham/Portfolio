@@ -14,8 +14,8 @@ const ProjectCarousel = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const basePath = process.env.PUBLIC_URL || "";
-        const response = await fetch(`${basePath}/data/projects.json`);
+        const basePath = import.meta.env.BASE_URL || "";
+        const response = await fetch(`${basePath}data/projects.json`);
         if (!response.ok) {
           throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
         }
@@ -82,7 +82,9 @@ const ProjectCarousel = () => {
             key={index}
             src={project.image}
             alt={project.title}
-            className={`carousel-image ${index === currentIndex ? "active" : ""}`}
+            className={`carousel-image ${
+              index === currentIndex ? "active" : ""
+            }`}
             loading="lazy"
           />
         ))}
@@ -94,10 +96,18 @@ const ProjectCarousel = () => {
         </div>
       </div>
 
-      <button className="carousel-button left" onClick={prevSlide} aria-label="Projet précédent">
+      <button
+        className="carousel-button left"
+        onClick={prevSlide}
+        aria-label="Projet précédent"
+      >
         &#10094;
       </button>
-      <button className="carousel-button right" onClick={nextSlide} aria-label="Projet suivant">
+      <button
+        className="carousel-button right"
+        onClick={nextSlide}
+        aria-label="Projet suivant"
+      >
         &#10095;
       </button>
     </div>
