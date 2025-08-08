@@ -8,7 +8,7 @@ import Contact from "./assets/pages/Contact";
 import Experience from "./assets/pages/Experience";
 import Footer from "./assets/components/Footer";
 
-const basename = process.env.PUBLIC_URL || "/";
+const basename = "/Portfolio";  // <-- ici tu fixes la base
 
 function App() {
   return (
@@ -32,3 +32,4 @@ function App() {
 }
 
 export default App;
+
