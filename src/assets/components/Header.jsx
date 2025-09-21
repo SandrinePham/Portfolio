@@ -74,6 +74,7 @@ const Header = () => {
 
         <button
           className="header__menu-toggle"
+          aria-label="Menu de navigation"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <span></span>

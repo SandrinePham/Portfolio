@@ -34,7 +34,7 @@ const About = () => {
         <div className="about__header">
           <h1 className="page-title">À propos de moi</h1>
           <div className="page-subtitle">
-            De la logistique au développement web
+            De la logistique au Développement web
           </div>
         </div>
 
@@ -52,6 +52,7 @@ const About = () => {
                 <h2>{title}</h2>
                 {index === 0 ? (
                   <>
+                  <p>Bonjour, je suis Sandrine Pham,</p>
                     <p>
                       Après près de 10 ans d'expérience dans la supply chain et
                       l’approvisionnement, j’ai décidé de donner un nouveau

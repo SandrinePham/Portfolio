@@ -6,13 +6,13 @@ import { useEffect, useRef, useState } from "react";
 const Skills = () => {
   const skills = [
     { name: "HTML", level: 95, category: "Frontend" },
-    { name: "CSS / SCSS", level: 90, category: "Frontend" },
+    { name: "CSS / SCSS / Animations", level: 90, category: "Frontend" },
+    { name: "SEO & Accessibilité", level: 90, category: "Frontend" },
+    { name: "API REST", level: 90, category: "Frontend" },
     { name: "JavaScript", level: 85, category: "Frontend" },
     { name: "React", level: 85, category: "Frontend" },
+
     { name: "Redux Toolkit", level: 75, category: "Frontend" },
-    { name: "SEO & Accessibilité", level: 80, category: "Frontend" },
-    { name: "Animation Web", level: 70, category: "Frontend" },
-    { name: "API REST", level: 80, category: "Frontend" },
   ];
   const tools = [
     "Git",
@@ -20,8 +20,8 @@ const Skills = () => {
     "Visual Studio Code",
     "Figma",
     "Google Analytics",
-    "npm",
-    "Vite",
+    "Postman",
+    "Lighthouse",
     "Chrome DevTools",
   ];
 
@@ -51,7 +51,6 @@ const Skills = () => {
       });
     };
   }, []);
-
 
   const diplomas = [
     {

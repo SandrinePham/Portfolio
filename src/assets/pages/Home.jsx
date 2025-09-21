@@ -1,43 +1,21 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";  // <-- Import ici
+import { useNavigate } from "react-router-dom";
 import Typewriter from "../components/Typewriter";
 import ProjectCarousel from "../components/ProjectCarousel";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const navigate = useNavigate();  // <-- Hook de navigation
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
   const lines = [
-    {
-      text: "Coder avec précision,",
-      className: "typewriter--large",
-    },
-    {
-      text: "créer avec intuition.",
-      className: "typewriter--large",
-    },
+    { text: "Coder avec précision,", className: "typewriter--large" },
+    { text: "créer avec intuition.", className: "typewriter--large" },
   ];
 
-  const projects = [
-    {
-      title: "Portfolio Créatif",
-      image: "/images/project1.jpg",
-    },
-    {
-      title: "E-commerce Vintage",
-      image: "/images/project2.jpg",
-    },
-    {
-      title: "Blog Design UX",
-      image: "/images/project3.jpg",
-    },
-  ];
-
-  // Fonction pour rediriger vers la page Contact
   const handleContactClick = () => {
     navigate("/contact");
   };
@@ -46,7 +24,7 @@ const Home = () => {
     <div className={`home ${isVisible ? "home--visible" : ""}`}>
       <div className="hero">
         <div className="hero__left carousel--desktop">
-          <ProjectCarousel projects={projects} />
+          <ProjectCarousel />
         </div>
         <div className="hero__right">
           <div className="hero__content">
@@ -57,16 +35,14 @@ const Home = () => {
 
               <div className="hero__description">
                 <p>
-                  Ecrivons ensemble l'histoire de votre projet digital. Avec une
+                  Écrivons ensemble l'histoire de votre projet digital. Avec une
                   passion pour le design et une expertise technique, je
-                  transforme vos idées en interfaces élégantes et
-                  fonctionnelles.
+                  transforme vos idées en interfaces élégantes et fonctionnelles.
                 </p>
               </div>
 
-              {/* ✅ Carrousel mobile ici */}
               <div className="carousel--mobile">
-                <ProjectCarousel projects={projects} />
+                <ProjectCarousel />
               </div>
 
               <div className="signature">
@@ -77,7 +53,7 @@ const Home = () => {
               <div className="hero__cta">
                 <button
                   className="btn btn--primary"
-                  onClick={handleContactClick} // <-- onClick ajouté
+                  onClick={handleContactClick}
                 >
                   Discutons de votre projet
                 </button>
@@ -94,10 +70,7 @@ const Home = () => {
               <div className="highlight-card__number">1+</div>
               <div className="highlight-card__text">
                 <h3>Années de création digitale</h3>
-                <p>
-                  À façonner des interfaces qui parlent autant au cœur qu’à
-                  l’œil.
-                </p>
+                <p>À façonner des interfaces qui parlent autant au cœur qu’à l’œil.</p>
               </div>
             </article>
 
@@ -113,10 +86,7 @@ const Home = () => {
               <div className="highlight-card__number">5</div>
               <div className="highlight-card__text">
                 <h3>Technologies comme palette</h3>
-                <p>
-                  React, SCSS, JavaScript... au service de l’esthétique et de la
-                  fluidité.
-                </p>
+                <p>React, SCSS, JavaScript... au service de l’esthétique et de la fluidité.</p>
               </div>
             </article>
           </div>

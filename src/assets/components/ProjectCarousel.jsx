@@ -3,35 +3,35 @@ import "./ProjectCarousel.scss";
 
 const postitColors = ["#FFE55C", "#87CEEB", "#98FB98", "#FFB6C1"];
 
-const ProjectCarousel = () => {
-  const [projects, setProjects] = useState([]);
+const ProjectCarousel = ({ projects: propsProjects = [] }) => {
+  const [projects, setProjects] = useState(propsProjects);
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef(null);
 
   const getColor = (index) => postitColors[index % postitColors.length];
 
-  // Chargement des projets depuis le dossier public avec PUBLIC_URL
+  // 🔹 Chargement fallback si aucune props
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const basePath = import.meta.env.BASE_URL || "";
-        const response = await fetch(`${basePath}data/projects.json`);
-        if (!response.ok) {
-          throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
+    if (propsProjects.length === 0) {
+      const fetchProjects = async () => {
+        try {
+          const basePath = import.meta.env.BASE_URL || "";
+          const response = await fetch(`${basePath}data/projects.json`);
+          if (!response.ok) {
+            throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
+          }
+          const data = await response.json();
+          setProjects(data);
+        } catch (error) {
+          console.error("Erreur chargement JSON :", error);
         }
-        const data = await response.json();
-        setProjects(data);
-      } catch (error) {
-        console.error("Erreur chargement JSON :", error);
-      }
-    };
+      };
 
-    fetchProjects();
-  }, []);
+      fetchProjects();
+    }
+  }, [propsProjects]);
 
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
+  const goToSlide = (index) => setCurrentIndex(index);
 
   const prevSlide = () => {
     if (projects.length === 0) return;
@@ -80,11 +80,13 @@ const ProjectCarousel = () => {
         {projects.map((project, index) => (
           <img
             key={index}
-            src={project.image}
+            src={
+              propsProjects.length > 0
+                ? project.image // Props passées → chemin déjà correct
+                : `${import.meta.env.BASE_URL}${project.image.replace(/^\//, "")}` // fallback JSON
+            }
             alt={project.title}
-            className={`carousel-image ${
-              index === currentIndex ? "active" : ""
-            }`}
+            className={`carousel-image ${index === currentIndex ? "active" : ""}`}
             loading="lazy"
           />
         ))}
