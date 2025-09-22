@@ -12,7 +12,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer__container">
         <div className="footer__section footer__about">
-          <h3 className="footer__title">Sandrine Pham</h3>
+          <h4 className="footer__title">Sandrine Pham</h4>
           <p className="footer__description">
             Développeuse Front-end passionnée, je transforme vos idées en
             expériences digitales élégantes et fonctionnelles.
@@ -20,7 +20,7 @@ const Footer = () => {
         </div>
         <section className="footer__content">
           <div className="footer__section footer__contact">
-            <h4>Contact: </h4>
+            <h5>Contact: </h5>
             <ul>
               <li>
                 <FaEnvelope />{" "}
@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
 
           <div className="footer__section footer__socials">
-            <h4>Réseaux sociaux: </h4>
+            <h5>Réseaux sociaux: </h5>
             <div className="footer__icons">
               <a
                 href="https://github.com/SandrinePham"

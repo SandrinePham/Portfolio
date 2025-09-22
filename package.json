@@ -1,8 +1,9 @@
 {
-  "name": "porfolio",
+  "name": "portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://SandrinePham.github.io/Portfolio",
   "scripts": {
     "deploy": "gh-pages -d dist",
     "dev": "vite",

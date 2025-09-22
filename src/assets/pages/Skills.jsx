@@ -94,7 +94,7 @@ const Skills = () => {
     <div className="skills">
       <div className="container">
         <div className="skills__header">
-          <h1 className="page-title">Mes Compétences</h1>
+          <h2 className="page-title">Mes Compétences</h2>
           <div className="page-subtitle">
             Technologies, outils et méthodes que je maîtrise
           </div>

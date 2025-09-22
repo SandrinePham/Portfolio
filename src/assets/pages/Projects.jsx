@@ -151,7 +151,7 @@ export default function Projects() {
     <div className="projects">
       <div className="container">
         <div className="projects__header">
-          <h1 className="page-title">Mes Projets</h1>
+          <h2 className="page-title">Mes Projets</h2>
           <div className="page-subtitle">Une sélection de mes créations</div>
         </div>
 

@@ -29,9 +29,9 @@ const Home = () => {
         <div className="hero__right">
           <div className="hero__content">
             <div className="hero__text">
-              <h1 className="hero__title">
+              <h2 className="hero__title">
                 <Typewriter lines={lines} speed={50} />
-              </h1>
+              </h2>
 
               <div className="hero__description">
                 <p>
@@ -46,7 +46,7 @@ const Home = () => {
               </div>
 
               <div className="signature">
-                <h2 className="signatureName">Sandrine Pham</h2>
+                <h3 className="signatureName">Sandrine Pham</h3>
                 <div className="signatureFonction">Développeuse Front-end</div>
               </div>
 
@@ -69,7 +69,7 @@ const Home = () => {
             <article className="highlight-card">
               <div className="highlight-card__number">1+</div>
               <div className="highlight-card__text">
-                <h3>Années de création digitale</h3>
+                <h4>Années de création digitale</h4>
                 <p>À façonner des interfaces qui parlent autant au cœur qu’à l’œil.</p>
               </div>
             </article>
@@ -77,7 +77,7 @@ const Home = () => {
             <article className="highlight-card">
               <div className="highlight-card__number">10</div>
               <div className="highlight-card__text">
-                <h3>Projets façonnés sur mesure</h3>
+                <h4>Projets façonnés sur mesure</h4>
                 <p>Chaque ligne de code pensée pour sublimer votre vision.</p>
               </div>
             </article>
@@ -85,7 +85,7 @@ const Home = () => {
             <article className="highlight-card">
               <div className="highlight-card__number">5</div>
               <div className="highlight-card__text">
-                <h3>Technologies comme palette</h3>
+                <h4>Technologies comme palette</h4>
                 <p>React, SCSS, JavaScript... au service de l’esthétique et de la fluidité.</p>
               </div>
             </article>

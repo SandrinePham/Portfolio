@@ -85,7 +85,7 @@ const ProjectCarousel = ({ projects: propsProjects = [] }) => {
                 ? project.image // Props passées → chemin déjà correct
                 : `${import.meta.env.BASE_URL}${project.image.replace(/^\//, "")}` // fallback JSON
             }
-            alt={project.title}
+            alt={project.alt}
             className={`carousel-image ${index === currentIndex ? "active" : ""}`}
             loading="lazy"
           />

@@ -4,7 +4,8 @@
     "title": "Riding Cities, association de skate",
     "description": "Refonte de la page Internet avec HTML. Ajout d'une section des membres fondateurs et d’un double bouton pour les plannings enfants et adultes.",
     "technologies": ["HTML"],
-    "image": "/images/projects/riding_cities.png",
+    "image": "/images/projects/riding_cities.webp",
+    "alt": "Screenshot de la page d'accueil du projet Riding Cities",
     "status": "Terminé",
     "code": "https://github.com/SandrinePham/Riding-cities",
     "projet": "https://sandrinepham.github.io/Riding-cities/"
@@ -14,7 +15,8 @@
     "title": "Booki, agence de voyage",
     "description": "Création de la page d’accueil responsive d’une agence de voyage pour rechercher hébergements et activités selon une ville.",
     "technologies": ["HTML", "CSS"],
-    "image": "/images/projects/booki.png",
+    "image": "/images/projects/booki.webp",
+    "alt": "Screenshot de la page d'accueil du projet Booki",
     "status": "Terminé",
     "code": "https://github.com/SandrinePham/booki",
     "projet": "https://sandrinepham.github.io/booki/"
@@ -24,7 +26,8 @@
     "title": "Ohmyfood, menus de restaurants",
     "description": "Site mobile-first de présentation de menus gastronomiques avec animations CSS et versionnement Git/GitHub.",
     "technologies": ["HTML", "Sass", "CSS", "GitHub"],
-    "image": "/images/projects/ohmyfood.png",
+    "image": "/images/projects/ohmyfood.webp",
+    "alt": "Screenshot de la page d'accueil du projet Ohmyfood",
     "status": "Terminé",
     "code": "https://github.com/SandrinePham/ohmyfood",
     "projet": "https://sandrinepham.github.io/ohmyfood/"
@@ -34,7 +37,8 @@
     "title": "Print it, imprimerie familiale",
     "description": "Ajout d’un carrousel interactif en JavaScript pour moderniser un site HTML existant.",
     "technologies": ["JavaScript", "HTML", "CSS"],
-    "image": "/images/projects/print_it.png",
+    "image": "/images/projects/print_it.webp",
+    "alt": "Screenshot de la page d'accueil du projet Print It",
     "status": "Terminé",
     "code": "https://github.com/SandrinePham/PrintIt",
     "projet": "https://sandrinepham.github.io/PrintIt/"
@@ -44,7 +48,8 @@
     "title": "Kasa, location d’appartements",
     "description": "Développement d'une application React avec React Router, animations CSS et carrousel pour les pages de logement.",
     "technologies": ["React", "React Router", "Sass", "Node.js"],
-    "image": "/images/projects/kasa.png",
+    "image": "/images/projects/kasa.webp",
+    "alt": "Screenshot de la page d'accueil du projet Kasa",
     "status": "Terminé",
     "code": "https://github.com/SandrinePham/Kasa",
     "projet": "https://sandrinepham.github.io/Kasa/"
@@ -54,7 +59,8 @@
     "title": "Nina Carducci, photographe",
     "description": "Optimisation SEO, accessibilité et performance du site via Lighthouse, Wave et bonnes pratiques HTML/CSS.",
     "technologies": ["Accessibilité", "Performance", "SEO", "HTML", "CSS"],
-    "image": "/images/projects/nina_carducci.png",
+    "image": "/images/projects/nina_carducci.webp",
+    "alt": "Screenshot de la page d'accueil du projet Nina Carducci",
     "status": "Terminé",
     "code": "https://github.com/SandrinePham/Nina-Carducci",
     "projet": "https://sandrinepham.github.io/Nina-Carducci/"
@@ -64,7 +70,8 @@
     "title": "ArgentBank, banque en ligne",
     "description": "Création d’une interface React/Redux connectée à une API back-end avec gestion d’état globale.",
     "technologies": ["React", "Redux", "Node.js", "Swagger", "API"],
-    "image": "/images/projects/argent_bank.png",
+    "image": "/images/projects/argent_bank.webp",
+    "alt": "Screenshot de la page d'accueil du projet Argent Bank",
     "status": "Terminé",
     "code": "https://github.com/SandrinePham/Argent-Bank",
     "projet": "https://sandrinepham.github.io/Argent-Bank/"
@@ -74,18 +81,27 @@
     "title": "Menu Maker, diffusion de menu",
     "description": "Rédaction des spécifications techniques, mise en place d’une veille technologique pour un outil de gestion de menus et mise en place du tableau Kanban pour le sprint.",
     "technologies": ["Kanban", "Agile", "Veille Techno", "Spécifications"],
-    "image": "/images/projects/menu_maker.png",
+    "image": "/images/projects/menu_maker.webp",
+    "alt": "Screenshot de la page d'accueil du projet Menu Maker",
     "status": "Terminé",
     "projet": "https://trello.com/invite/b/687e345959a97cc399e2f5a3/ATTIc3d477275d3e683180148a418445f65d8AE18343/menu-market-kanban"
   },
-{
-  "id": 10,
-  "title": "Sophie Bluel, architecte d'intérieur",
-  "description": "Création d'une page web dynamique",
-  "technologies": ["JavaScript", "React", "API", "Node.js", "GitHub", "Figma"],
-  "image": "/images/projects/sophie_bluel.png",
-  "status": "Terminé",
-  "code": "https://github.com/SandrinePham/Portfolio-architecte-sophie-bluel-master",
-  "projet": "https://sandrinepham.github.io/Portfolio-architecte-sophie-bluel-master/"
-}
+  {
+    "id": 10,
+    "title": "Sophie Bluel, architecte d'intérieur",
+    "description": "Création d'une page web dynamique",
+    "technologies": [
+      "JavaScript",
+      "React",
+      "API",
+      "Node.js",
+      "GitHub",
+      "Figma"
+    ],
+    "image": "/images/projects/sophie_bluel.webp",
+    "alt": "Screenshot de la page d'accueil du projet Sophie Bluel",
+    "status": "Terminé",
+    "code": "https://github.com/SandrinePham/Portfolio-architecte-sophie-bluel-master",
+    "projet": "https://sandrinepham.github.io/Portfolio-architecte-sophie-bluel-master/"
+  }
 ]

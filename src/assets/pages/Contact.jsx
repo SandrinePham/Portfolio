@@ -25,7 +25,7 @@ const Contact = () => {
     <div className="contact">
       <div className="container">
         <div className="contact__header">
-          <h1 className="page-title">Contactez-moi</h1>
+          <h2 className="page-title">Contactez-moi</h2>
           <div className="page-subtitle">Discutons de votre projet</div>
         </div>
 

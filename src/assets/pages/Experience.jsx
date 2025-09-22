@@ -97,7 +97,7 @@ const Experience = () => {
     <div className="experience">
       <div className="container">
         <div className="experience__header">
-          <h1 className="page-title">Mon Parcours</h1>
+          <h2 className="page-title">Mon Parcours</h2>
           <div className="page-subtitle">Retour sur mes expériences professionnelles</div>
         </div>
 
