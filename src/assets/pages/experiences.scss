@@ -9,12 +9,14 @@
     .page-title {
       font-size: 2rem;
       color: $primary-color;
+      font-family: $font-heading;
     }
 
     .page-subtitle {
       font-size: 1.1rem;
       color: $text-light;
       margin-top: $spacing-sm;
+      font-family: $font-modern;
     }
   }
 
@@ -35,7 +37,6 @@
   transform: translateY(20px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 
-  // Fade-in when visible
   &.visible {
     opacity: 1;
     transform: translateY(0);
@@ -46,24 +47,27 @@
     transform: translateY(-4px);
   }
 
-  h2 {
+  h3 {
     font-family: $font-modern;
     font-size: 1.25rem;
     margin-bottom: $spacing-xs;
     color: $primary-color;
   }
 
-  h3 {
+  h4 {
+    font-family: $font-modern;
     font-size: 1rem;
-    color: $text-dark;
     margin-bottom: $spacing-xs;
+    color: $text-dark;
   }
 
   .job-period {
+    font-family: $font-modern;
     font-size: 0.9rem;
     font-style: italic;
     color: $text-light;
     margin-bottom: $spacing-sm;
+    display: block;
   }
 
   ul {

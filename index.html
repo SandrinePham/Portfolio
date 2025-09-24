@@ -1,64 +1,126 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/SP.svg"/>
+    <link rel="icon" type="image/svg+xml" href="/SP.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- ✅ Meta SEO -->
-    <meta name="description" content="Portfolio de Sandrine Pham, développeuse web front-end en remote. Spécialisée en React, JavaScript et intégration responsive, elle conçoit des sites modernes et performants. Découvrez ses projets, compétences et services en développement web." />
-    <meta name="keywords" content="Sandrine Pham, développeuse web, développeuse front-end, portfolio front-end, React, JavaScript, HTML, CSS, intégration responsive, développement web remote, création site internet, applications web modernes" />
+    <!-- Meta SEO -->
+    <meta
+      name="description"
+      content="Portfolio de Sandrine Pham, développeuse web front-end en remote. Spécialisée en React, JavaScript et intégration responsive. Découvrez ses projets, compétences et services en développement web."
+    />
+    <meta
+      name="keywords"
+      content="Sandrine Pham, développeuse web, développeuse front-end, portfolio front-end, React, JavaScript, HTML, CSS, intégration responsive, développement web remote, création site internet, applications web modernes"
+    />
+    <meta name="author" content="Sandrine Pham" />
+    <link rel="canonical" href="https://thecodeofsp.com/" />
 
     <title>Sandrine Pham - Portfolio Développeuse Front-end</title>
 
-    <!-- 🌐 Open Graph -->
+    <!-- Open Graph -->
     <meta property="og:title" content="Sandrine Pham - Développeuse Web Front-End Remote" />
     <meta property="og:description" content="Portfolio de Sandrine Pham, spécialisée en React, JavaScript et intégration responsive. Découvrez ses projets et compétences en développement web." />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content="https://thecodeofsp.com/" />
 
-    <!-- 🔎 Données structurées JSON-LD -->
+    <!-- JSON-LD -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Sandrine Pham",
-      "url": "https://thecodeofsp.com",
-      "image": "https://thecodeofsp.com/images/portrait.jpg",
-      "jobTitle": "Développeuse Web Front-End",
-      "description": "Développeuse web front-end spécialisée en React, JavaScript et intégration responsive. Disponible en remote pour vos projets de développement web.",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Freelance"
-      },
-      "sameAs": [
-        "https://github.com/ton-profil",
-        "https://www.linkedin.com/in/ton-profil",
-      ]
-    }
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Portfolio de Sandrine Pham",
-      "url": "https://ton-domaine.com",
-      "description": "Portfolio de Sandrine Pham, développeuse web front-end spécialisée en React, JavaScript et intégration responsive. Découvrez ses projets, services et compétences en développement web remote.",
-      "publisher": {
+      {
+        "@context": "https://schema.org",
         "@type": "Person",
-        "name": "Sandrine Pham"
+        "name": "Sandrine Pham",
+        "url": "https://thecodeofsp.com",
+        "jobTitle": "Développeuse Web Front-End",
+        "description": "Développeuse web front-end spécialisée en React, JavaScript et intégration responsive. Disponible en remote pour vos projets de développement web.",
+        "worksFor": { "@type": "Organization", "name": "Freelance" },
+        "sameAs": ["https://github.com/sandrine-pham","https://www.linkedin.com/in/sandrine-pham"]
       }
-    }
     </script>
 
-    <!-- ✅ Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Portfolio de Sandrine Pham",
+        "url": "https://thecodeofsp.com",
+        "description": "Portfolio de Sandrine Pham, développeuse web front-end spécialisée en React, JavaScript et intégration responsive. Découvrez ses projets, services et compétences en développement web remote.",
+        "publisher": { "@type": "Person", "name": "Sandrine Pham" }
+      }
+    </script>
+
+    <!-- Fonts optimisées -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;600&family=Montserrat:wght@300;400;500&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;600&family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Crimson+Text:wght@400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+    </noscript>
+
+    <!-- CSS critique inline -->
+    <style>
+      :root {
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+        color-scheme: light dark;
+        color: rgba(255,255,255,0.87);
+        background-color: #242424;
+        font-synthesis: none;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body {
+        margin: 0;
+        display: flex;
+        place-items: center;
+        min-width: 320px;
+        min-height: 100vh;
+      }
+
+      h1 { font-size: 3.2em; line-height: 1.1; }
+
+      button {
+        border-radius: 8px;
+        border: 1px solid transparent;
+        padding: 0.6em 1.2em;
+        font-size: 1em;
+        font-weight: 500;
+        font-family: inherit;
+        background-color: #1a1a1a;
+        cursor: pointer;
+        transition: border-color 0.25s;
+      }
+      button:hover { border-color: #646cff; }
+      button:focus,
+      button:focus-visible { outline: 4px auto -webkit-focus-ring-color; }
+
+      @media (prefers-color-scheme: light) {
+        :root { color: #213547; background-color: #ffffff; }
+        a:hover { color: #747bff; }
+        button { background-color: #f9f9f9; }
+      }
+    </style>
+
+    <!-- JS différé -->
+    <script type="module" src="/src/main.jsx" defer></script>
   </head>
+
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

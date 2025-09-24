@@ -1,19 +1,18 @@
 @use "../style/variables.scss" as *;
 
-
 .skills {
   padding: $spacing-xl 0;
-  
+
   &__header {
     margin-bottom: $spacing-xl;
   }
-  
+
   &__content {
     display: flex;
     flex-direction: column;
     gap: $spacing-xl;
   }
-  
+
   &__section {
     h2 {
       color: $primary-color;
@@ -22,7 +21,7 @@
       margin-bottom: $spacing-lg;
     }
   }
-  
+
   &__list {
     display: flex;
     flex-direction: column;
@@ -37,26 +36,26 @@
     align-items: center;
     margin-bottom: $spacing-xs;
   }
-  
+
   &__name {
     font-family: $font-modern;
     font-weight: 500;
     color: $text-dark;
   }
-  
+
   &__level {
     font-family: $font-modern;
     font-size: 0.9rem;
     color: $text-light;
   }
-  
+
   &__bar {
     height: 8px;
     background: rgba(139, 69, 19, 0.1);
     border-radius: 4px;
     overflow: hidden;
   }
-  
+
   &__progress {
     height: 100%;
     background: linear-gradient(90deg, $primary-color, $secondary-color);
@@ -79,7 +78,7 @@
   box-shadow: $shadow-light;
   font-family: $font-modern;
   transition: $transition-fast;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: $shadow-medium;
@@ -98,36 +97,20 @@
   border-radius: 8px;
   box-shadow: $shadow-light;
   transition: $transition-medium;
-  
+
   &:hover {
     transform: translateY(-4px);
     box-shadow: $shadow-medium;
   }
-  
+
   h3 {
     color: $primary-color;
     margin-bottom: $spacing-sm;
   }
-  
+
   p {
     color: $text-medium;
     margin: 0;
-  }
-}
-
-// Animation fade-in
-.story-section,
-.about__image,
-.skill-item,
-.tool-item,
-.methodology-card {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -144,14 +127,7 @@
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  opacity: 0;
-  transform: translateY(20px);
   transition: all 0.6s ease;
-
-  &.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .diploma-header {
@@ -171,11 +147,6 @@
   font-weight: bold;
   font-size: 1.1rem;
   margin-bottom: 0.2rem;
-}
-
-.diploma-type {
-  font-style: italic;
-  color: #666;
 }
 
 .diploma-institution,
@@ -212,4 +183,19 @@
   color: $primary-color;
   display: inline-block;
   margin-top: 0.8rem;
+}
+
+/* --- Fade-in animation pour tous les éléments animés --- */
+.skill-item,
+.tool-item,
+.methodology-card,
+.diploma-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

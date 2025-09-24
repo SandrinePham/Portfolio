@@ -10,91 +10,77 @@ const ProjectCarousel = ({ projects: propsProjects = [] }) => {
 
   const getColor = (index) => postitColors[index % postitColors.length];
 
-  // 🔹 Chargement fallback si aucune props
+  // 🔹 Fetch JSON si projects vide et garder les 3 derniers
   useEffect(() => {
-    if (propsProjects.length === 0) {
+    if (projects.length === 0) {
       const fetchProjects = async () => {
         try {
           const basePath = import.meta.env.BASE_URL || "";
           const response = await fetch(`${basePath}data/projects.json`);
-          if (!response.ok) {
-            throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
-          }
-          const data = await response.json();
+          if (!response.ok) throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
+          let data = await response.json();
+          data = data.slice(-3); // 🔹 Garde seulement les 3 derniers
           setProjects(data);
         } catch (error) {
           console.error("Erreur chargement JSON :", error);
         }
       };
-
       fetchProjects();
     }
-  }, [propsProjects]);
+  }, []);
+
+  // 🔹 Auto-slide léger
+  useEffect(() => {
+    if (projects.length === 0) return;
+
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % projects.length);
+    }, 4000);
+
+    return () => clearInterval(intervalRef.current);
+  }, [projects]);
 
   const goToSlide = (index) => setCurrentIndex(index);
 
-  const prevSlide = () => {
-    if (projects.length === 0) return;
+  const prevSlide = () =>
     goToSlide(currentIndex === 0 ? projects.length - 1 : currentIndex - 1);
-    resetAutoSlide();
-  };
 
-  const nextSlide = () => {
-    if (projects.length === 0) return;
+  const nextSlide = () =>
     goToSlide(currentIndex === projects.length - 1 ? 0 : currentIndex + 1);
-    resetAutoSlide();
-  };
 
-  const startAutoSlide = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prevIndex) =>
-        projects.length === 0
-          ? 0
-          : prevIndex === projects.length - 1
-          ? 0
-          : prevIndex + 1
-      );
-    }, 4000);
-  };
-
-  const resetAutoSlide = () => {
-    clearInterval(intervalRef.current);
-    startAutoSlide();
-  };
-
-  useEffect(() => {
-    if (projects.length > 0) {
-      startAutoSlide();
-      return () => clearInterval(intervalRef.current);
-    }
-  }, [projects]);
-
-  if (!projects || projects.length === 0) {
-    return <div className="carousel-container">Aucun projet disponible.</div>;
+  if (projects.length === 0) {
+    return (
+      <div className="carousel-container" style={{ minHeight: "300px" }}>
+        <p style={{ textAlign: "center", paddingTop: "100px" }}>
+          Chargement des projets...
+        </p>
+      </div>
+    );
   }
 
+  const activeProject = projects[currentIndex];
+  const basePath = import.meta.env.BASE_URL || "";
+  const lowRes = `${basePath}${activeProject.image.replace(/^\//, "").replace(".jpg", "-low.jpg")}`; // placeholder
+  const highRes = `${basePath}${activeProject.image.replace(/^\//, "")}`;
+
   return (
-    <div className="carousel-container">
+    <div className="carousel-container" style={{ minHeight: "300px" }}>
       <div className="carousel-image-wrapper">
-        {projects.map((project, index) => (
-          <img
-            key={index}
-            src={
-              propsProjects.length > 0
-                ? project.image // Props passées → chemin déjà correct
-                : `${import.meta.env.BASE_URL}${project.image.replace(/^\//, "")}` // fallback JSON
-            }
-            alt={project.alt}
-            className={`carousel-image ${index === currentIndex ? "active" : ""}`}
-            loading="lazy"
-          />
-        ))}
+        <img
+          src={lowRes}
+          data-src={highRes}
+          alt={activeProject.alt || `Projet ${currentIndex + 1}`}
+          className="carousel-image active"
+          loading="lazy"
+          onLoad={(e) => {
+            e.currentTarget.src = e.currentTarget.dataset.src;
+          }}
+        />
         <div
           className="carousel-title"
           style={{ backgroundColor: getColor(currentIndex) }}
         >
-          {projects[currentIndex].title}
+          {activeProject.title}
         </div>
       </div>
 

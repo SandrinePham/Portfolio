@@ -23,12 +23,13 @@ const Home = () => {
   return (
     <div className={`home ${isVisible ? "home--visible" : ""}`}>
       <div className="hero">
-        <div className="hero__left carousel--desktop">
-          <ProjectCarousel />
-        </div>
+        {/* 🔹 Carousel unique */}
+        <ProjectCarousel />
+
         <div className="hero__right">
           <div className="hero__content">
             <div className="hero__text">
+              {/* H2 pour le slogan, H1 dans le Header */}
               <h2 className="hero__title">
                 <Typewriter lines={lines} speed={50} />
               </h2>
@@ -41,10 +42,6 @@ const Home = () => {
                 </p>
               </div>
 
-              <div className="carousel--mobile">
-                <ProjectCarousel />
-              </div>
-
               <div className="signature">
                 <h3 className="signatureName">Sandrine Pham</h3>
                 <div className="signatureFonction">Développeuse Front-end</div>
@@ -54,6 +51,7 @@ const Home = () => {
                 <button
                   className="btn btn--primary"
                   onClick={handleContactClick}
+                  aria-label="Aller à la page contact pour discuter d'un projet"
                 >
                   Discutons de votre projet
                 </button>
@@ -67,15 +65,27 @@ const Home = () => {
         <div className="container">
           <div className="highlights">
             <article className="highlight-card">
-              <div className="highlight-card__number">1+</div>
+              <div
+                className="highlight-card__number"
+                aria-label="Plus d'une année d'expérience en création digitale"
+              >
+                1+
+              </div>
               <div className="highlight-card__text">
                 <h4>Années de création digitale</h4>
-                <p>À façonner des interfaces qui parlent autant au cœur qu’à l’œil.</p>
+                <p>
+                  À façonner des interfaces qui parlent autant au cœur qu’à l’œil.
+                </p>
               </div>
             </article>
 
             <article className="highlight-card">
-              <div className="highlight-card__number">10</div>
+              <div
+                className="highlight-card__number"
+                aria-label="Dix projets réalisés sur mesure"
+              >
+                10
+              </div>
               <div className="highlight-card__text">
                 <h4>Projets façonnés sur mesure</h4>
                 <p>Chaque ligne de code pensée pour sublimer votre vision.</p>
@@ -83,10 +93,18 @@ const Home = () => {
             </article>
 
             <article className="highlight-card">
-              <div className="highlight-card__number">5</div>
+              <div
+                className="highlight-card__number"
+                aria-label="Cinq technologies maîtrisées"
+              >
+                5
+              </div>
               <div className="highlight-card__text">
                 <h4>Technologies comme palette</h4>
-                <p>React, SCSS, JavaScript... au service de l’esthétique et de la fluidité.</p>
+                <p>
+                  React, SCSS, JavaScript... au service de l’esthétique et de la
+                  fluidité.
+                </p>
               </div>
             </article>
           </div>

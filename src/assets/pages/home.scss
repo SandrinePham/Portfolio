@@ -1,11 +1,12 @@
-// src/scss/pages/home.scss
 @use "../style/variables.scss" as *;
 
 :root {
   --primary-color: #{$primary-color};
 }
 
+// ===================
 // Animations
+// ===================
 @keyframes fadeInUpSoft {
   from {
     opacity: 0;
@@ -38,7 +39,9 @@
   }
 }
 
+// ===================
 // Home container
+// ===================
 .home {
   opacity: 0;
   transition: opacity 1s ease;
@@ -48,9 +51,17 @@
   }
 }
 
+// ===================
 // Hero Section
+// ===================
 .hero {
-  padding: $spacing-sm 0;
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: auto;
+  flex-direction: row;
+  width: 90%;
 
   &__content {
     display: flex;
@@ -85,8 +96,6 @@
       margin: 0 auto;
       max-width: 1200px;
       color: $text-light;
-      font-size: 1rem;
-      margin: 0;
     }
   }
 
@@ -100,24 +109,16 @@
       font-size: 1rem;
     }
   }
-}
-
-.hero {
-  display: flex;
-  gap: 2rem;
-  padding: 2rem 0;
-  max-width: 1200px;
-  margin: auto;
 
   &__left {
-    flex: 1; // moitié gauche
+    flex: 1;
     max-width: 50%;
-    min-width: 300px; // pour garder un minimum sur petits écrans
+    min-width: 300px;
     padding: 1rem;
   }
 
   &__right {
-    flex: 1; // moitié droite
+    flex: 1;
     max-width: 50%;
     display: flex;
     flex-direction: column;
@@ -136,72 +137,42 @@
     &__left {
       margin-bottom: 2rem;
     }
+    &__description p {
+      font-size: 1rem;
+    }
   }
 }
 
-@media (max-width: $mobile) {
-  .carousel-container {
-    max-height: none;
-    height: 250px; // ✅ Ajout essentiel pour rendre les images visibles
-  }
-}
-
-// Afficher / cacher les carrousels selon la taille d'écran
-.show-desktop {
-  display: block;
-}
-
-.show-mobile {
-  display: none;
-}
-
-@media (max-width: $mobile) {
-  .show-desktop {
-    display: none !important;
-  }
-
-  .show-mobile {
-    display: block !important;
-    margin: 2rem 0;
-  }
-}
-
-// 🔤 Typewriter: ligne de base
+// ===================
+// Typewriter
+// ===================
 .hero__typewriter-line {
   font-family: $font-heading;
   white-space: nowrap;
   display: inline-block;
   overflow: hidden;
-  border-right: 2px solid transparent; // par défaut, pas de curseur
+  border-right: 2px solid transparent;
   padding-right: 2px;
   line-height: 1.4;
 }
 
-// ✨ Curseur actif uniquement sur la dernière ligne en cours
 .hero__typewriter-line--active {
   border-right: 2px solid var(--primary-color);
   animation: blinkCaret 1s step-end infinite;
 }
 
-// 💫 Blink animation
-
-// 🌟 Typo principale : accroche poétique
 .typewriter--large {
   font-size: 2.6rem;
   font-weight: 600;
   color: $text-dark;
   letter-spacing: 0.5px;
 }
-
-// 🌿 Phrase secondaire : complément fluide
 .typewriter--small {
   font-size: 2.6rem;
   color: $accent-color;
   font-style: italic;
   letter-spacing: 0.5px;
 }
-
-// 👩‍🎨 Nom : visible, élégant
 .typewriter--name {
   font-size: 1.8rem;
   font-weight: 500;
@@ -209,8 +180,6 @@
   margin-top: 0.3rem;
   text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.08);
 }
-
-// 🛠 Fonction : finesse et modernité
 .typewriter--fonction {
   font-family: $font-modern;
   font-size: 1rem;
@@ -219,7 +188,6 @@
   font-weight: 400;
   letter-spacing: 0.4px;
 }
-
 .hero__cursor-blink {
   display: inline-block;
   width: 2px;
@@ -230,7 +198,33 @@
   vertical-align: bottom;
 }
 
-// Highlights Section
+@media (max-width: 1024px) {
+  .typewriter--large {
+    font-size: 2.2rem;
+  }
+  .typewriter--small {
+    font-size: 1.6rem;
+  }
+  .typewriter--name {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .typewriter--large {
+    font-size: 1.8rem;
+  }
+  .typewriter--small {
+    font-size: 1.4rem;
+  }
+  .typewriter--name {
+    font-size: 1.6rem;
+  }
+}
+
+// ===================
+// Highlights
+// ===================
 .home__highlights {
   padding: $spacing-xl 0;
   background: rgba(255, 255, 255, 0.3);
@@ -242,6 +236,13 @@
   grid-template-columns: 1fr;
   gap: $spacing-lg;
   padding: 0 $spacing-md;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .highlight-card {
@@ -270,96 +271,29 @@
       font-size: 1.2rem;
       margin-bottom: $spacing-xs;
     }
-
     p {
       color: $text-dark;
       font-size: 1rem;
       margin: 0;
     }
   }
-}
 
-// --- Responsive Typewriter Title ---
-@media (max-width: 1024px) {
-  .typewriter--large {
-    font-size: 2.2rem;
-  }
-
-  .typewriter--small {
-    font-size: 1.6rem;
-  }
-
-  .typewriter--name {
-    font-size: 2rem;
+  @media (min-width: 768px) {
+    &__number {
+      font-size: 3rem;
+    }
   }
 }
 
-@media (max-width: 768px) {
-  .typewriter--large {
-    font-size: 1.8rem;
-  }
-
-  .typewriter--small {
-    font-size: 1.4rem;
-  }
-
-  .typewriter--name {
-    font-size: 1.6rem;
-  }
-
-  .hero__description p {
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .hero__description p {
-    font-size: 1.1rem;
-  }
-
-  .highlights {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .highlight-card__number {
-    font-size: 3rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .highlights {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-// Par défaut : afficher version desktop, cacher version mobile
-.carousel--desktop {
-  display: block;
-}
-
-.carousel--mobile {
-  display: none;
-}
-
-// En mobile : on inverse
-@media (max-width: $mobile) {
-  .carousel--desktop {
-    display: none;
-  }
-
-  .carousel--mobile {
-    display: block;
-    margin: $spacing-md 0;
-  }
-}
-
+// ===================
+// Signature
+// ===================
 .signatureName {
   font-size: 1.8rem;
   color: $primary-color;
   margin: 0;
   text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
 }
-
 .signatureFonction {
   font-family: $font-modern;
   font-size: 0.9rem;

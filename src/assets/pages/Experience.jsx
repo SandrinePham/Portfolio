@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react"
-import './experiences.scss'
+import { useEffect, useRef, useState } from "react";
+import './experiences.scss';
 
 const Experience = () => {
   const jobs = [
@@ -63,35 +63,34 @@ const Experience = () => {
         "Gestion des points de rupture"
       ]
     }
-  ]
+  ];
 
-  // Refs et états pour animation
   const cardRefs = useRef([]);
   const [visibleCards, setVisibleCards] = useState([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        entries.forEach(entry => {
           const index = entry.target.dataset.index;
-          if (entry.isIntersecting) {
-            setVisibleCards((prev) => [...new Set([...prev, index])]);
+          if (entry.isIntersecting && !visibleCards.includes(index)) {
+            setVisibleCards(prev => [...prev, index]);
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    cardRefs.current.forEach((ref) => {
+    cardRefs.current.forEach(ref => {
       if (ref) observer.observe(ref);
     });
 
     return () => {
-      cardRefs.current.forEach((ref) => {
+      cardRefs.current.forEach(ref => {
         if (ref) observer.unobserve(ref);
       });
     };
-  }, []);
+  }, [visibleCards]);
 
   return (
     <div className="experience">
@@ -105,16 +104,16 @@ const Experience = () => {
           {jobs.map((job, index) => (
             <div
               key={index}
-              ref={(el) => (cardRefs.current[index] = el)}
+              ref={el => { if(el && !cardRefs.current.includes(el)) cardRefs.current.push(el); }}
               data-index={index}
               className={`job-card ${visibleCards.includes(String(index)) ? "visible" : ""}`}
             >
-              <h2>{job.title}</h2>
-              <h3>{job.company}</h3>
-              <p className="job-period">{job.period}</p>
+              <h3>{job.title}</h3>
+              <h4>{job.company}</h4>
+              <time className="job-period">{job.period}</time>
               <ul>
-                {job.tasks.map((task, idx) => (
-                  <li key={idx}>{task}</li>
+                {job.tasks.map((task, i) => (
+                  <li key={i}>{task}</li>
                 ))}
               </ul>
             </div>

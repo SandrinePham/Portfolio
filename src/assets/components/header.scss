@@ -1,6 +1,9 @@
-@use '../style/variables.scss' as *;
+@use "sass:color";
+@use "../style/variables.scss" as *;
 
-
+// ===================
+// Header
+// ===================
 .header {
   position: fixed;
   top: 0;
@@ -12,7 +15,7 @@
   border-bottom: 2px solid $primary-color;
   z-index: 1000;
   transition: $transition-medium;
-  
+
   &__container {
     display: flex;
     justify-content: space-between;
@@ -22,7 +25,7 @@
     margin: 0 auto;
     padding: 0 $spacing-md;
   }
-  
+
   &__logo {
     h1 {
       font-size: 1.8rem;
@@ -30,15 +33,28 @@
       margin: 0;
       text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
     }
+
+    .header__logo-link {
+      text-decoration: none;
+      color: $primary-color;
+
+      &:visited {
+        color: $primary-color; // Garde la même couleur après clic
+      }
+
+      &:hover {
+        color: color.scale($primary-color, $lightness: -10%);
+      }
+    }
   }
-  
+
   &__subtitle {
     font-family: $font-modern;
     font-size: 0.9rem;
     color: $text-light;
     margin-top: -5px;
   }
-  
+
   &__menu-toggle {
     display: none;
     flex-direction: column;
@@ -46,7 +62,7 @@
     border: none;
     cursor: pointer;
     padding: 5px;
-    
+
     span {
       width: 25px;
       height: 3px;
@@ -54,18 +70,23 @@
       margin: 3px 0;
       transition: $transition-fast;
     }
-    
+
     @media (max-width: 927px) {
       display: flex;
     }
   }
 }
 
+// ===================
+// Navigation
+// ===================
 .nav {
   &__list {
     display: flex;
     list-style: none;
-    
+    gap: 1rem;
+    background: rgba(245, 230, 211, 0.98);
+
     @media (max-width: 927px) {
       position: absolute;
       top: 100%;
@@ -80,17 +101,15 @@
       transition: $transition-medium;
     }
   }
-  
-  &--open {
-    .nav__list {
-      @media (max-width: $mobile) {
-        transform: translateY(0);
-        opacity: 1;
-        visibility: visible;
-      }
+
+  &--open .nav__list {
+    @media (max-width: 927px) {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
     }
   }
-  
+
   &__link {
     text-decoration: none;
     color: $text-dark;
@@ -100,9 +119,13 @@
     border-radius: 4px;
     transition: $transition-fast;
     position: relative;
-    
+
+    &:visited {
+      color: $text-dark; // Garde la même couleur après clic
+    }
+
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -2px;
       left: 50%;
@@ -112,11 +135,11 @@
       transition: $transition-fast;
       transform: translateX(-50%);
     }
-    
+
     &:hover,
     &.active {
       color: $primary-color;
-      
+
       &::before {
         width: 80%;
       }

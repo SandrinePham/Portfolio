@@ -1,0 +1,121 @@
+@use "../style/variables.scss" as *;
+
+.project-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: $shadow-light;
+  overflow: hidden;
+  transition: $transition-medium;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-heavy;
+  }
+
+  &__image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      transition: $transition-medium;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+
+    .project-card__status {
+      position: absolute;
+      top: $spacing-sm;
+      right: $spacing-sm;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-family: $font-modern;
+      font-size: 0.8rem;
+      font-weight: bold;
+
+      &--terminé {
+        background: $postit-green;
+        color: #2f5233;
+      }
+
+      &--en-cours {
+        background: $postit-blue;
+        color: #2f4f7f;
+      }
+    }
+  }
+
+  &__content {
+    padding: 1rem;
+  }
+
+  &__title {
+    font-size: 1.3rem;
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+  }
+
+  &__description {
+    font-size: 0.95rem;
+    color: $text-dark;
+    margin-bottom: $spacing-sm;
+    line-height: 1.5;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &.full {
+      white-space: normal;
+      overflow: visible;
+    }
+  }
+
+  .show-more {
+    background: none;
+    border: none;
+    color: $primary-color;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: $spacing-sm;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+    margin-bottom: 1rem;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-sm;
+
+    @media (max-width: $mobile) {
+      flex-direction: column;
+    }
+
+    a.btn {
+      flex: 1;
+      text-align: center;
+    }
+  }
+}
+
+.tech-tag {
+  background: rgba(139, 69, 19, 0.1);
+  color: $primary-color;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-family: $font-modern;
+  font-size: 0.8rem;
+  font-weight: 500;
+}

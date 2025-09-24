@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../style/variables.scss" as *;
 
 .projects {
@@ -5,17 +6,6 @@
 
   &__header {
     margin-bottom: $spacing-lg;
-
-    .btn--reset {
-      color: #fff;
-      padding: 0.5rem 1.2rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      margin-top: 1rem;
-      transition: background 0.3s ease;
-    }
   }
 
   &__filters {
@@ -23,70 +13,98 @@
     border-top: 1px solid #eee;
     padding-top: 2rem;
 
-    .filter-search {
-      padding: 0.5rem 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-family: $font-modern;
-      font-size: 1rem;
-      width: 100%;
-      max-width: 400px;
-      margin-bottom: 2rem;
-    }
-
     .filter-row {
       display: flex;
-      gap: 2rem;
       flex-wrap: wrap;
-      align-items: center;
+      gap: 2rem;
+      align-items: flex-start;
+
+      &:nth-child(2) {
+        // Outils Dev
+        .filter-category {
+          flex: 1 1 100%;
+          min-width: unset;
+        }
+      }
 
       .filter-category {
         flex: 1;
-        min-width: 180px;
-        margin-bottom: 2px;
-      }
-    }
+        min-width: 220px;
+        border-radius: 8px;
+        transition: $transition-medium;
+        margin-bottom: 1px;
 
-    .filter-category {
-      h4 {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        font-weight: bold;
-        font-size: 1rem;
-        color: $primary-color;
-        margin-bottom: 1rem;
-        user-select: none;
+        h4 {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          font-weight: bold;
+          font-size: 1.1rem;
+          color: $primary-color;
+          user-select: none;
+          margin-bottom: 0;
 
-        .label-text {
-          margin-right: 0.3rem; // rapproche le texte de la flèche
-        }
+          .label-text {
+            margin-right: 0.5rem;
+          }
 
-        .chevron {
-          transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); // effet bounce
-          transform: rotate(0deg);
-
-          &.chevron--open {
-            transform: rotate(180deg);
+          svg {
+            transition: transform 0.3s ease;
           }
         }
 
-        &:hover {
-          color: lighten($primary-color, 10%);
+        .checkbox-group {
+          overflow: hidden;
+          max-height: 0;
+          opacity: 0;
+          transform-origin: top;
+          transition: all 0.3s ease;
+
+          &.open {
+            max-height: 500px;
+            opacity: 1;
+          }
+
+          .tag {
+            display: inline-block;
+            margin: 6px 8px;
+            padding: 6px 12px;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+            background: rgba(139, 69, 19, 0.05);
+
+            &--active {
+              background: $primary-color;
+              color: #fff;
+              border-color: $primary-color;
+            }
+
+            &:hover {
+              background: rgba($primary-color, 0.1);
+            }
+          }
         }
       }
+    }
 
-      .checkbox-group {
-        overflow: hidden;
-        max-height: 0;
-        opacity: 0;
-        transform-origin: top;
-        transition: all 0.3s ease;
+    .btn--reset {
+      background: $primary-color;
+      color: #fff;
+      padding: 0.6rem 1.4rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.3s ease, transform 0.2s ease;
 
-        &.open {
-          max-height: 500px;
-          opacity: 1;
-        }
+      &:hover {
+        background: color.scale($primary-color, $lightness: -10%);
+        transform: translateY(-2px);
       }
     }
   }
@@ -100,125 +118,12 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: $spacing-lg;
-    margin-top: 20px;
+    margin-top: 2rem;
 
     @media (max-width: $mobile) {
       grid-template-columns: 1fr;
     }
-  }
-}
-
-.project-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: $shadow-light;
-  overflow: hidden;
-  transition: $transition-medium;
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: $shadow-heavy;
-  }
-
-  &__image {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: $transition-medium;
-    }
-
-    &:hover img {
-      transform: scale(1.1);
-    }
-
-    .project-card__status {
-      position: absolute;
-      top: $spacing-sm;
-      right: $spacing-sm;
-      padding: 4px 8px;
-      border-radius: 12px;
-      font-family: $font-modern;
-      font-size: 0.8rem;
-      font-weight: bold;
-
-      &--terminé {
-        background: $postit-green;
-        color: #2f5233;
-      }
-
-      &--en-cours {
-        background: $postit-blue;
-        color: #2f4f7f;
-      }
-    }
-  }
-
-  &__content {
-    padding: $spacing-md;
-  }
-
-  &__title {
-    font-size: 1.3rem;
-    color: $primary-color;
-    margin-bottom: $spacing-sm;
-  }
-
-  &__description {
-    margin-bottom: $spacing-md;
-    line-height: 1.6;
-  }
-
-  &__technologies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-xs;
-    margin-bottom: $spacing-md;
-  }
-
-  &__actions {
-    display: flex;
-    gap: $spacing-sm;
-
-    @media (max-width: $mobile) {
-      flex-direction: column;
-    }
-  }
-}
-
-.tech-tag {
-  background: rgba(139, 69, 19, 0.1);
-  color: $primary-color;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-family: $font-modern;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-.tag {
-  margin: 4px 10px;
-  padding: 0px 10px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  user-select: none;
-
-  &--active {
-    background: $primary-color;
-    color: #fff;
-    border-color: $primary-color;
-  }
-
-  &:hover {
-    background: rgba($primary-color, 0.1);
   }
 }

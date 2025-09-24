@@ -1,25 +1,25 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import './contact.scss';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
-  })
+  });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
-    })
-  }
+    });
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('Formulaire soumis:', formData)
-    // Ici vous pourriez ajouter la logique d'envoi
-    alert('Message envoyé ! (simulation)')
-  }
+    e.preventDefault();
+    console.log('Formulaire soumis:', formData);
+    alert('Message envoyé ! (simulation)');
+  };
 
   return (
     <div className="contact">
@@ -30,6 +30,7 @@ const Contact = () => {
         </div>
 
         <div className="contact__content">
+          {/* Info à gauche */}
           <div className="contact__info">
             <h2>Parlons ensemble</h2>
             <p>
@@ -37,7 +38,7 @@ const Contact = () => {
               N'hésitez pas à me contacter. Je serais ravie d'échanger avec vous 
               et de donner vie à vos idées.
             </p>
-            
+
             <div className="contact__details">
               <div className="contact__item">
                 <strong>Email</strong>
@@ -54,6 +55,7 @@ const Contact = () => {
             </div>
           </div>
 
+          {/* Formulaire à droite */}
           <form className="contact__form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Nom</label>
@@ -98,7 +100,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
