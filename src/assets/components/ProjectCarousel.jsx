@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useFetchProjects } from "../hooks/UseFectchProjects"; // ✅ hook partagé
+import { useFetchProjects } from "../hooks/UseFectchProjects";
 import "./ProjectCarousel.scss";
 
 const postitColors = ["#FFE55C", "#87CEEB", "#98FB98", "#FFB6C1"];
 
 const ProjectCarousel = () => {
-  const { projectsData, loading, error } = useFetchProjects(); // 🔹 hook personnalisé
+  const { projectsData, loading, error } = useFetchProjects();
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef(null);
 
@@ -22,11 +22,17 @@ const ProjectCarousel = () => {
     return () => clearInterval(intervalId);
   }, [projectsData]);
 
-  const goToSlide = (index) => setCurrentIndex(index);
+  // 🔹 Précharger le slide suivant
+  useEffect(() => {
+    if (!projectsData.length) return;
+    const nextIndex = (currentIndex + 1) % projectsData.length;
+    const nextImg = new Image();
+    nextImg.src = projectsData[nextIndex].image;
+  }, [currentIndex, projectsData]);
 
+  const goToSlide = (index) => setCurrentIndex(index);
   const prevSlide = () =>
     goToSlide(currentIndex === 0 ? projectsData.length - 1 : currentIndex - 1);
-
   const nextSlide = () =>
     goToSlide(currentIndex === projectsData.length - 1 ? 0 : currentIndex + 1);
 
@@ -68,19 +74,22 @@ const ProjectCarousel = () => {
   return (
     <div className="carousel-container" style={{ minHeight: "300px" }}>
       <div className="carousel-image-wrapper">
-        <img
-          src={lowRes}
-          data-src={highRes}
-          alt={activeProject.alt || `Projet ${currentIndex + 1}`}
-          className="carousel-image active"
-          loading="lazy"
-          onLoad={(e) => {
-            e.currentTarget.src = e.currentTarget.dataset.src;
-          }}
-        />
+        <picture>
+          <source srcSet={highRes} type="image/jpeg" />
+          <img
+            src={lowRes}
+            alt={activeProject.alt || `Projet ${currentIndex + 1}`}
+            className="carousel-image active"
+            loading="lazy"
+            style={{ willChange: "transform, opacity", transition: "opacity 0.5s ease" }}
+          />
+        </picture>
         <div
           className="carousel-title"
-          style={{ backgroundColor: getColor(currentIndex) }}
+          style={{
+            backgroundColor: getColor(currentIndex),
+            willChange: "transform, opacity",
+          }}
         >
           {activeProject.title}
         </div>
@@ -104,4 +113,4 @@ const ProjectCarousel = () => {
   );
 };
 
-export default ProjectCarousel;
+export default React.memo(ProjectCarousel);

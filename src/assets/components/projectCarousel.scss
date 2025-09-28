@@ -29,6 +29,8 @@
 
 .carousel-image-wrapper {
   height: 100%;
+  aspect-ratio: 16 / 9; // préserve l'espace pour LCP
+  position: relative;
 }
 
 // ===================
@@ -46,12 +48,13 @@
   border-radius: 12px;
   transition: opacity $transition-slow;
   z-index: 0;
+  will-change: opacity; // GPU optimization
+}
 
-  &.active {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 1;
-  }
+.carousel-image.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
 }
 
 // ===================
@@ -73,10 +76,11 @@
   max-width: 60%;
   line-height: 1.4;
   z-index: 2;
-  will-change: transform; // GPU pour l'animation
+  will-change: transform, opacity; // GPU pour animations
 
   &:hover {
     transform: rotate(0deg) scale(1.03);
+    transition: transform 0.3s ease; // plus rapide et plus léger
   }
 
   &::before {
@@ -94,7 +98,7 @@
   }
 
   &:hover::before {
-    animation: pin-swing 0.8s ease-in-out infinite alternate; // fréquence réduite
+    animation: pin-swing 0.5s ease-in-out alternate; // fréquence réduite
   }
 
   @media (max-width: $mobile) {
