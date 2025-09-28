@@ -4,7 +4,6 @@ import Home from "./assets/pages/Home";
 import About from "./assets/pages/About";
 import Projects from "./assets/pages/Projects";
 import Skills from "./assets/pages/Skills";
-import Contact from "./assets/pages/Contact";
 import Experience from "./assets/pages/Experience";
 import Footer from "./assets/components/Footer";
 
@@ -22,7 +21,6 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/experience" element={<Experience />} />
-            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         <Footer />

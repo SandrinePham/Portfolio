@@ -44,11 +44,6 @@ const Header = () => {
                 Expériences
               </NavLink>
             </li>
-            <li className="nav__item">
-              <NavLink to="/contact" className="nav__link" onClick={() => setIsMenuOpen(false)}>
-                Contact
-              </NavLink>
-            </li>
           </ul>
         </nav>
 

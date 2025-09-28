@@ -45,7 +45,7 @@ const Footer = () => {
 
         <section className="footer__content">
           <div className="footer__section footer__contact">
-            <h5>Contact: </h5>
+            <h5>Contactez moi : </h5>
             <ul>
               <ContactItem
                 icon={FaEnvelope}

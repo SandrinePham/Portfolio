@@ -16,9 +16,6 @@ const Home = () => {
     { text: "créer avec intuition.", className: "typewriter--large" },
   ];
 
-  const handleContactClick = () => {
-    navigate("/contact");
-  };
 
   return (
     <div className={`home ${isVisible ? "home--visible" : ""}`}>
@@ -50,7 +47,6 @@ const Home = () => {
               <div className="hero__cta">
                 <button
                   className="btn btn--primary"
-                  onClick={handleContactClick}
                   aria-label="Aller à la page contact pour discuter d'un projet"
                 >
                   Discutons de votre projet
