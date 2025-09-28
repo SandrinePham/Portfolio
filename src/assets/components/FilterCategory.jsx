@@ -1,16 +1,20 @@
+// FilterCategory.jsx
 import { memo, useCallback } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 
-function Option({ label, active, onClick }) {
+// 🔹 Composant Tag
+function Tag({ label, active, onClick }) {
   return (
-    <span className={`tag ${active ? "tag--active" : ""}`} onClick={onClick}>
+    <span
+      className={`tag ${active ? "tag--active" : ""}`}
+      onClick={onClick}
+    >
       {label}
     </span>
   );
 }
 
-// Memo pour ne re-render que si props changent
-const MemoOption = memo(Option);
+const MemoTag = memo(Tag);
 
 export default function FilterCategory({
   categoryKey,
@@ -21,11 +25,11 @@ export default function FilterCategory({
   isOpen,
   toggleSection,
 }) {
-  // useCallback pour mémoriser la fonction
   const handleToggleSection = useCallback(
     () => toggleSection(categoryKey),
     [categoryKey, toggleSection]
   );
+
   const handleToggleFilter = useCallback(
     (opt) => () => toggleFilter(categoryKey, opt),
     [categoryKey, toggleFilter]
@@ -34,21 +38,24 @@ export default function FilterCategory({
   return (
     <div className="filter-category">
       <h4 onClick={handleToggleSection}>
-        {label}
-        {isOpen ? <FaChevronUp size={14} /> : <FaChevronDown size={14} />}
+        <span className="label-text">{label}</span>
+        <FaChevronDown
+          size={14}
+          style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+        />
       </h4>
-      {isOpen && (
-        <div className="checkbox-group">
-          {options.map((opt) => (
-            <MemoOption
-              key={opt}
-              label={opt}
-              active={filters[categoryKey].has(opt)}
-              onClick={handleToggleFilter(opt)}
-            />
-          ))}
-        </div>
-      )}
+
+      {/* ✅ Toujours rendu, mais avec une classe dynamique */}
+      <div className={`checkbox-group ${isOpen ? "open" : ""}`}>
+        {options.map((opt) => (
+          <MemoTag
+            key={opt}
+            label={opt}
+            active={filters[categoryKey].has(opt)}
+            onClick={handleToggleFilter(opt)}
+          />
+        ))}
+      </div>
     </div>
   );
 }

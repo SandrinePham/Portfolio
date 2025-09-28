@@ -1,54 +1,36 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useFetchProjects } from "../hooks/UseFectchProjects"; // ✅ hook partagé
 import "./ProjectCarousel.scss";
 
 const postitColors = ["#FFE55C", "#87CEEB", "#98FB98", "#FFB6C1"];
 
-const ProjectCarousel = ({ projects: propsProjects = [] }) => {
-  const [projects, setProjects] = useState(propsProjects);
+const ProjectCarousel = () => {
+  const { projectsData, loading, error } = useFetchProjects(); // 🔹 hook personnalisé
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef(null);
 
   const getColor = (index) => postitColors[index % postitColors.length];
 
-  // 🔹 Fetch JSON si projects vide et garder les 3 derniers
+  // 🔹 Auto-slide
   useEffect(() => {
-    if (projects.length === 0) {
-      const fetchProjects = async () => {
-        try {
-          const basePath = import.meta.env.BASE_URL || "";
-          const response = await fetch(`${basePath}data/projects.json`);
-          if (!response.ok) throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
-          let data = await response.json();
-          data = data.slice(-3); // 🔹 Garde seulement les 3 derniers
-          setProjects(data);
-        } catch (error) {
-          console.error("Erreur chargement JSON :", error);
-        }
-      };
-      fetchProjects();
-    }
-  }, []);
+    if (!projectsData.length) return;
 
-  // 🔹 Auto-slide léger
-  useEffect(() => {
-    if (projects.length === 0) return;
-
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % projects.length);
+    const intervalId = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % projectsData.length);
     }, 4000);
 
-    return () => clearInterval(intervalRef.current);
-  }, [projects]);
+    return () => clearInterval(intervalId);
+  }, [projectsData]);
 
   const goToSlide = (index) => setCurrentIndex(index);
 
   const prevSlide = () =>
-    goToSlide(currentIndex === 0 ? projects.length - 1 : currentIndex - 1);
+    goToSlide(currentIndex === 0 ? projectsData.length - 1 : currentIndex - 1);
 
   const nextSlide = () =>
-    goToSlide(currentIndex === projects.length - 1 ? 0 : currentIndex + 1);
+    goToSlide(currentIndex === projectsData.length - 1 ? 0 : currentIndex + 1);
 
-  if (projects.length === 0) {
+  if (loading) {
     return (
       <div className="carousel-container" style={{ minHeight: "300px" }}>
         <p style={{ textAlign: "center", paddingTop: "100px" }}>
@@ -58,9 +40,29 @@ const ProjectCarousel = ({ projects: propsProjects = [] }) => {
     );
   }
 
-  const activeProject = projects[currentIndex];
+  if (error) {
+    return (
+      <div className="carousel-container" style={{ minHeight: "300px" }}>
+        <p style={{ color: "red", textAlign: "center", paddingTop: "100px" }}>
+          Erreur : {error}
+        </p>
+      </div>
+    );
+  }
+
+  if (!projectsData.length) {
+    return (
+      <div className="carousel-container" style={{ minHeight: "300px" }}>
+        <p style={{ textAlign: "center", paddingTop: "100px" }}>
+          Aucun projet disponible.
+        </p>
+      </div>
+    );
+  }
+
+  const activeProject = projectsData[currentIndex];
   const basePath = import.meta.env.BASE_URL || "";
-  const lowRes = `${basePath}${activeProject.image.replace(/^\//, "").replace(".jpg", "-low.jpg")}`; // placeholder
+  const lowRes = `${basePath}${activeProject.image.replace(/^\//, "").replace(".jpg", "-low.jpg")}`;
   const highRes = `${basePath}${activeProject.image.replace(/^\//, "")}`;
 
   return (
