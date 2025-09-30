@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {  FaCode, FaWarehouse } from "react-icons/fa";
+import { FaCode, FaWarehouse } from "react-icons/fa";
 import "./skills.scss";
 
 const Skills = () => {

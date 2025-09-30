@@ -1,0 +1,42 @@
+// Colors - Palette vintage
+$primary-color: #8b4513;
+$secondary-color: #d4af37;
+$accent-color: #cd853f;
+$background-light: #f5e6d3;
+$background-paper: #faf0e6;
+$text-dark: #2f1b14;
+$text-medium: #5d4e37;
+$text-light: #8b7355;
+
+// Post-it colors
+$postit-yellow: #ffe55c;
+$postit-blue: #87ceeb;
+$postit-green: #98fb98;
+$postit-pink: #ffb6c1;
+
+// Typography
+$font-heading: "Playfair Display", serif;
+$font-body: "Crimson Text", serif;
+$font-modern: "Montserrat", sans-serif;
+
+// Spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 3rem;
+$spacing-xl: 4rem;
+
+// Breakpoints
+$mobile: 768px;
+$tablet: 1024px;
+$desktop: 1200px;
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-medium: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Shadows
+$shadow-light: 0 2px 8px rgba(139, 69, 19, 0.1);
+$shadow-medium: 0 4px 16px rgba(139, 69, 19, 0.15);
+$shadow-heavy: 0 8px 32px rgba(139, 69, 19, 0.2);

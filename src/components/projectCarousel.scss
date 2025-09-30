@@ -8,7 +8,7 @@
 .carousel-image-wrapper {
   position: relative;
   width: 100%;
-  min-height: 300px; // fixe pour éviter CLS
+  min-height: 300px;
 }
 
 .carousel-container {
@@ -20,6 +20,10 @@
   transition: all $transition-medium;
   margin: auto;
 
+  @media (max-width: $tablet) {
+    max-height: 350px;
+  }
+
   @media (max-width: $mobile) {
     height: 250px;
     max-height: none;
@@ -29,7 +33,7 @@
 
 .carousel-image-wrapper {
   height: 100%;
-  aspect-ratio: 16 / 9; // préserve l'espace pour LCP
+  aspect-ratio: 16 / 9;
   position: relative;
 }
 
@@ -48,7 +52,7 @@
   border-radius: 12px;
   transition: opacity $transition-slow;
   z-index: 0;
-  will-change: opacity; // GPU optimization
+  will-change: opacity;
 }
 
 .carousel-image.active {
@@ -58,9 +62,9 @@
 }
 
 // ===================
-// Carousel Title
+// PostIt Component
 // ===================
-.carousel-title {
+.postit {
   position: absolute;
   top: $spacing-sm;
   left: $spacing-sm;
@@ -76,29 +80,32 @@
   max-width: 60%;
   line-height: 1.4;
   z-index: 2;
-  will-change: transform, opacity; // GPU pour animations
-
-  &:hover {
-    transform: rotate(0deg) scale(1.03);
-    transition: transform 0.3s ease; // plus rapide et plus léger
-  }
 
   &::before {
     content: "";
     position: absolute;
-    top: -12px;
-    left: 20px;
+    top: -7px; // centré en haut
+    left: 50%;
+    transform: translateX(-50%);
     width: 14px;
     height: 14px;
     border-radius: 50%;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-    background: radial-gradient(circle at center, $primary-color 60%, $primary-color 20%);
-    transform: rotate(10deg);
+    background: radial-gradient(
+      circle at center,
+      $primary-color 60%,
+      $primary-color 20%
+    );
     z-index: 3;
   }
 
+  &:hover {
+    transform: rotate(0deg) scale(1.03);
+    transition: transform 0.3s ease;
+  }
+
   &:hover::before {
-    animation: pin-swing 0.5s ease-in-out alternate; // fréquence réduite
+    animation: pin-swing 0.5s ease-in-out alternate;
   }
 
   @media (max-width: $mobile) {
@@ -124,12 +131,21 @@
   z-index: 3;
   transition: background-color $transition-fast;
 
-  &.left { left: $spacing-sm; }
-  &.right { right: $spacing-sm; }
+  &.left {
+    left: $spacing-sm;
+  }
+  &.right {
+    right: $spacing-sm;
+  }
 
   &:hover {
     background-color: $accent-color;
     color: $background-paper;
+  }
+
+  @media (max-width: $tablet) {
+    font-size: 1.35rem;
+    padding: 0.4rem;
   }
 
   @media (max-width: $mobile) {
@@ -142,6 +158,10 @@
 // Animations
 // ===================
 @keyframes pin-swing {
-  0% { transform: rotate(5deg); }
-  100% { transform: rotate(-5deg); }
+  0% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(-5deg);
+  }
 }

@@ -1,0 +1,64 @@
+@use "sass:color";
+@use "../style/variables.scss" as *;
+
+.filter-category {
+  flex: 1;
+  min-width: 220px;
+  border-radius: 8px;
+  transition: $transition-medium;
+
+  h4 {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: $primary-color;
+    user-select: none;
+    margin-bottom: 0;
+
+    .label-text {
+      margin-right: 0.5rem;
+    }
+
+    svg {
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .checkbox-group {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform-origin: top;
+    transition: all 0.3s ease;
+
+    &.open {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 6px 8px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+      background: rgba(139, 69, 19, 0.05);
+
+      &--active {
+        background: $primary-color;
+        color: #fff;
+        border-color: $primary-color;
+      }
+
+      &:hover {
+        background: rgba($primary-color, 0.1);
+      }
+    }
+  }
+}

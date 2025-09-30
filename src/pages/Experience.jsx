@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import './experiences.scss';
+import "./experiences.scss";
 
 const Experience = () => {
   const jobs = [
@@ -10,8 +10,8 @@ const Experience = () => {
       tasks: [
         "Assistance à la négociation des achats",
         "Mise en place de stratégies selon les projets",
-        "Passation et suivi de commandes"
-      ]
+        "Passation et suivi de commandes",
+      ],
     },
     {
       title: "Gestionnaire de stock",
@@ -20,8 +20,8 @@ const Experience = () => {
       tasks: [
         "Analyse des inventaires et stocks négatifs",
         "Gestion logistique et navettes inter-sites",
-        "Participation à l’amélioration continue"
-      ]
+        "Participation à l’amélioration continue",
+      ],
     },
     {
       title: "Approvisionneuse région",
@@ -30,8 +30,8 @@ const Experience = () => {
       tasks: [
         "Approvisionnements gros œuvre (2000 références)",
         "Analyse des besoins et ruptures",
-        "Interface entre ventes, achats et fournisseurs"
-      ]
+        "Interface entre ventes, achats et fournisseurs",
+      ],
     },
     {
       title: "Supply Officer A350",
@@ -40,8 +40,8 @@ const Experience = () => {
       tasks: [
         "Approvisionnements sur l’A350 (3000 références)",
         "Résolution des arrêts de production",
-        "Interface multi-métiers et coordination fournisseurs"
-      ]
+        "Interface multi-métiers et coordination fournisseurs",
+      ],
     },
     {
       title: "Agent logistique",
@@ -50,8 +50,8 @@ const Experience = () => {
       tasks: [
         "Approvisionnements, gestion des flux et stocks",
         "Traitement des flux parasites",
-        "Suivi des commandes et sous-traitance"
-      ]
+        "Suivi des commandes et sous-traitance",
+      ],
     },
     {
       title: "Chargée du service distribution",
@@ -60,9 +60,9 @@ const Experience = () => {
       tasks: [
         "Création et suivi des tournées chauffeurs",
         "Analyse des consommations clients",
-        "Gestion des points de rupture"
-      ]
-    }
+        "Gestion des points de rupture",
+      ],
+    },
   ];
 
   const cardRefs = useRef([]);
@@ -71,22 +71,22 @@ const Experience = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           const index = entry.target.dataset.index;
           if (entry.isIntersecting && !visibleCards.includes(index)) {
-            setVisibleCards(prev => [...prev, index]);
+            setVisibleCards((prev) => [...prev, index]);
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    cardRefs.current.forEach(ref => {
+    cardRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
     return () => {
-      cardRefs.current.forEach(ref => {
+      cardRefs.current.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
     };
@@ -97,16 +97,23 @@ const Experience = () => {
       <div className="container">
         <div className="experience__header">
           <h2 className="page-title">Mon Parcours</h2>
-          <div className="page-subtitle">Retour sur mes expériences professionnelles</div>
+          <div className="page-subtitle">
+            Retour sur mes expériences professionnelles
+          </div>
         </div>
 
         <div className="experience__content">
           {jobs.map((job, index) => (
             <div
               key={index}
-              ref={el => { if(el && !cardRefs.current.includes(el)) cardRefs.current.push(el); }}
+              ref={(el) => {
+                if (el && !cardRefs.current.includes(el))
+                  cardRefs.current.push(el);
+              }}
               data-index={index}
-              className={`job-card ${visibleCards.includes(String(index)) ? "visible" : ""}`}
+              className={`job-card ${
+                visibleCards.includes(String(index)) ? "visible" : ""
+              }`}
             >
               <h3>{job.title}</h3>
               <h4>{job.company}</h4>

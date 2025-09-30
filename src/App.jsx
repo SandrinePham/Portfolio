@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./assets/components/Header";
-import Home from "./assets/pages/Home";
-import About from "./assets/pages/About";
-import Projects from "./assets/pages/Projects";
-import Skills from "./assets/pages/Skills";
-import Experience from "./assets/pages/Experience";
-import Footer from "./assets/components/Footer";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import Skills from "./pages/Skills";
+import Experience from "./pages/Experience";
+import Footer from "./components/Footer";
 
-const basename = "/Portfolio";  // <-- ici tu fixes la base
+const basename = "/Portfolio"; // <-- ici tu fixes la base
 
 function App() {
   return (
@@ -30,4 +30,3 @@ function App() {
 }
 
 export default App;
-

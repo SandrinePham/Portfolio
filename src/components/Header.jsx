@@ -20,27 +20,47 @@ const Header = () => {
         <nav className={`nav ${isMenuOpen ? "nav--open" : ""}`}>
           <ul className="nav__list">
             <li className="nav__item">
-              <NavLink to="/" className="nav__link" onClick={() => setIsMenuOpen(false)}>
+              <NavLink
+                to="/"
+                className="nav__link"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Accueil
               </NavLink>
             </li>
             <li className="nav__item">
-              <NavLink to="/about" className="nav__link" onClick={() => setIsMenuOpen(false)}>
+              <NavLink
+                to="/about"
+                className="nav__link"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 À propos
               </NavLink>
             </li>
             <li className="nav__item">
-              <NavLink to="/projects" className="nav__link" onClick={() => setIsMenuOpen(false)}>
+              <NavLink
+                to="/projects"
+                className="nav__link"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Projets
               </NavLink>
             </li>
             <li className="nav__item">
-              <NavLink to="/skills" className="nav__link" onClick={() => setIsMenuOpen(false)}>
+              <NavLink
+                to="/skills"
+                className="nav__link"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Compétences
               </NavLink>
             </li>
             <li className="nav__item">
-              <NavLink to="/experience" className="nav__link" onClick={() => setIsMenuOpen(false)}>
+              <NavLink
+                to="/experience"
+                className="nav__link"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Expériences
               </NavLink>
             </li>

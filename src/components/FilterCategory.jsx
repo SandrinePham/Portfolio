@@ -1,19 +1,14 @@
-// FilterCategory.jsx
 import { memo, useCallback } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import "./filterCategory.scss";
 
-// 🔹 Composant Tag
 function Tag({ label, active, onClick }) {
   return (
-    <span
-      className={`tag ${active ? "tag--active" : ""}`}
-      onClick={onClick}
-    >
+    <span className={`tag ${active ? "tag--active" : ""}`} onClick={onClick}>
       {label}
     </span>
   );
 }
-
 const MemoTag = memo(Tag);
 
 export default function FilterCategory({
@@ -45,7 +40,6 @@ export default function FilterCategory({
         />
       </h4>
 
-      {/* ✅ Toujours rendu, mais avec une classe dynamique */}
       <div className={`checkbox-group ${isOpen ? "open" : ""}`}>
         {options.map((opt) => (
           <MemoTag

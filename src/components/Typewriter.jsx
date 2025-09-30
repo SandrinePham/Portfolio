@@ -1,9 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
 const Typewriter = ({ lines, speed = 50 }) => {
-  const [displayedLines, setDisplayedLines] = useState(
-    lines.map(() => "")
-  );
+  const [displayedLines, setDisplayedLines] = useState(lines.map(() => ""));
   const [currentLine, setCurrentLine] = useState(0);
   const [currentChar, setCurrentChar] = useState(0);
   const timeoutRef = useRef(null);
@@ -45,7 +43,8 @@ const Typewriter = ({ lines, speed = 50 }) => {
       {displayedLines.map((line, i) => {
         const isActive =
           i === currentLine && currentChar < (lines[i]?.text?.length || 0);
-        const isLastAndDone = i === lines.length - 1 && currentLine >= lines.length;
+        const isLastAndDone =
+          i === lines.length - 1 && currentLine >= lines.length;
 
         return (
           <span
@@ -53,7 +52,9 @@ const Typewriter = ({ lines, speed = 50 }) => {
             className={`hero__typewriter-line ${lines[i]?.className || ""}`}
           >
             {line}
-            {(isActive || isLastAndDone) && <span className="hero__cursor-blink" />}
+            {(isActive || isLastAndDone) && (
+              <span className="hero__cursor-blink" />
+            )}
             <br />
           </span>
         );
@@ -63,4 +64,3 @@ const Typewriter = ({ lines, speed = 50 }) => {
 };
 
 export default Typewriter;
-

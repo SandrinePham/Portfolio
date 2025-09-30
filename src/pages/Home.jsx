@@ -16,7 +16,6 @@ const Home = () => {
     { text: "créer avec intuition.", className: "typewriter--large" },
   ];
 
-
   return (
     <div className={`home ${isVisible ? "home--visible" : ""}`}>
       <div className="hero">
@@ -35,7 +34,8 @@ const Home = () => {
                 <p>
                   Écrivons ensemble l'histoire de votre projet digital. Avec une
                   passion pour le design et une expertise technique, je
-                  transforme vos idées en interfaces élégantes et fonctionnelles.
+                  transforme vos idées en interfaces élégantes et
+                  fonctionnelles.
                 </p>
               </div>
 
@@ -70,7 +70,8 @@ const Home = () => {
               <div className="highlight-card__text">
                 <h4>Années de création digitale</h4>
                 <p>
-                  À façonner des interfaces qui parlent autant au cœur qu’à l’œil.
+                  À façonner des interfaces qui parlent autant au cœur qu’à
+                  l’œil.
                 </p>
               </div>
             </article>

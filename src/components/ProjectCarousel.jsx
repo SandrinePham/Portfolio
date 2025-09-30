@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./ProjectCarousel.scss";
-
-const postitColors = ["#FFE55C", "#87CEEB", "#98FB98", "#FFB6C1"];
+import PostIt from "./PostIt";
 
 const ProjectCarousel = ({ projects: propsProjects = [] }) => {
   const [projects, setProjects] = useState(propsProjects);
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef(null);
-
-  const getColor = (index) => postitColors[index % postitColors.length];
 
   // 🔹 Fetch JSON si projects vide et garder les 3 derniers
   useEffect(() => {
@@ -17,9 +14,10 @@ const ProjectCarousel = ({ projects: propsProjects = [] }) => {
         try {
           const basePath = import.meta.env.BASE_URL || "";
           const response = await fetch(`${basePath}data/projects.json`);
-          if (!response.ok) throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
+          if (!response.ok)
+            throw new Error(`Erreur HTTP ! Statut : ${response.status}`);
           let data = await response.json();
-          data = data.slice(-3); // 🔹 Garde seulement les 3 derniers
+          data = data.slice(-3);
           setProjects(data);
         } catch (error) {
           console.error("Erreur chargement JSON :", error);
@@ -41,8 +39,10 @@ const ProjectCarousel = ({ projects: propsProjects = [] }) => {
   }, [projects]);
 
   const goToSlide = (index) => setCurrentIndex(index);
-  const prevSlide = () => goToSlide(currentIndex === 0 ? projects.length - 1 : currentIndex - 1);
-  const nextSlide = () => goToSlide(currentIndex === projects.length - 1 ? 0 : currentIndex + 1);
+  const prevSlide = () =>
+    goToSlide(currentIndex === 0 ? projects.length - 1 : currentIndex - 1);
+  const nextSlide = () =>
+    goToSlide(currentIndex === projects.length - 1 ? 0 : currentIndex + 1);
 
   if (projects.length === 0) {
     return (
@@ -67,12 +67,7 @@ const ProjectCarousel = ({ projects: propsProjects = [] }) => {
           className="carousel-image active"
           loading="lazy"
         />
-        <div
-          className="carousel-title"
-          style={{ backgroundColor: getColor(currentIndex) }}
-        >
-          {activeProject.title}
-        </div>
+        <PostIt index={currentIndex}>{activeProject.title}</PostIt>
       </div>
 
       <button

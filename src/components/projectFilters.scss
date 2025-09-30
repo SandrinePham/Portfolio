@@ -1,0 +1,45 @@
+@use "sass:color";
+@use "../style/variables.scss" as *;
+
+.projects__filters {
+  margin: 2rem 0;
+  border-top: 1px solid #eee;
+  padding-top: 2rem;
+
+  .filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+
+    &:last-child {
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  .btn--reset {
+    background: $primary-color;
+    color: #fff;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background: color.scale($primary-color, $lightness: -10%);
+      transform: translateY(-2px);
+    }
+  }
+
+  .projects__count {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: $primary-color;
+    margin-top: $spacing-sm;
+  }
+}
